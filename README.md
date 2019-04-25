@@ -23,4 +23,3 @@ lda with pymc to compare against
 lda with pyro which will probably going to be my main file for starters it currently contains only naive bayesian inference
 
 [lda_pyro.ipynb](https://github.com/SimiPro/robotjudge/blob/master/lda_pyro.ipynb)
-
