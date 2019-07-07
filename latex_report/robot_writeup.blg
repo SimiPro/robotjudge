@@ -1,0 +1,61 @@
+This is BibTeX, Version 0.99d (TeX Live 2017/Debian)
+Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
+The top-level auxiliary file: robot_writeup.aux
+The style file: IEEEtran.bst
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Database file #1: robot_writeup.bib
+-- IEEEtran.bst version 1.13 (2008/09/30) by Michael Shell.
+-- http://www.michaelshell.org/tex/ieeetran/bibtex/
+-- See the "IEEEtran_bst_HOWTO.pdf" manual for usage information.
+Name 1 in "Judd, Nicholas, Dan Drinkard, Jeremy Carbaugh, and Lindsay Young" has a comma at the end for entry congress-downloader
+while executing---line 2419 of file IEEEtran.bst
+Too many commas in name 1 of "Judd, Nicholas, Dan Drinkard, Jeremy Carbaugh, and Lindsay Young" for entry congress-downloader
+while executing---line 2419 of file IEEEtran.bst
+
+Done.
+You've used 6 entries,
+            4039 wiz_defined-function locations,
+            835 strings with 8283 characters,
+and the built_in function-call counts, 3017 in all, are:
+= -- 212
+> -- 97
+< -- 0
++ -- 48
+- -- 23
+* -- 140
+:= -- 490
+add.period$ -- 12
+call.type$ -- 6
+change.case$ -- 10
+chr.to.int$ -- 0
+cite$ -- 6
+duplicate$ -- 243
+empty$ -- 276
+format.name$ -- 26
+if$ -- 658
+int.to.chr$ -- 0
+int.to.str$ -- 6
+missing$ -- 61
+newline$ -- 41
+num.names$ -- 4
+pop$ -- 172
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 2
+skip$ -- 227
+stack$ -- 0
+substring$ -- 14
+swap$ -- 148
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 5
+type$ -- 6
+warning$ -- 0
+while$ -- 4
+width$ -- 7
+write$ -- 72
+(There were 2 error messages)
