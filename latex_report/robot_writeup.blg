@@ -8,6 +8,7 @@ Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Database file #1: robot_writeup.bib
+Warning--I didn't find a database entry for "DBLP:journals/corr/DhingraZFMC16"
 -- IEEEtran.bst version 1.13 (2008/09/30) by Michael Shell.
 -- http://www.michaelshell.org/tex/ieeetran/bibtex/
 -- See the "IEEEtran_bst_HOWTO.pdf" manual for usage information.
@@ -19,7 +20,7 @@ while executing---line 2419 of file IEEEtran.bst
 Done.
 You've used 6 entries,
             4039 wiz_defined-function locations,
-            835 strings with 8283 characters,
+            837 strings with 8347 characters,
 and the built_in function-call counts, 3017 in all, are:
 = -- 212
 > -- 97

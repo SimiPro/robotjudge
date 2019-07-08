@@ -51,7 +51,7 @@ The congressional records and therefore the speeches can all be publicly accesse
 \section{Plan}
 \label{sec:Plan}
 In the first part of this section I will tell shortly about the failure and massive time loss that resulted in trying to adapt LDA to be used with the twitter data and in the second part a short summary of the neural network based method that finally worked for predicting hash tags. 
-\subsection{LDA}
+\subsection{Latent Dirichlet Allocation (LDA)}
 \subsubsection{Standard LDA}
 LDA was one of the algorithms for topic models that got presented in class. The generative model to generate a word makes it very simple to think about. Given a document sample a topic and for this topic sample a word. And the word is the thing we observe and we can use to learn the corresponding distributions. 
 \begin{figure}
@@ -73,7 +73,15 @@ So naturally I thought it should be simple to extend LDA so that it can also pre
 \subsection{Training}
 The plan ready I had to find some framework that allowed me to implement and train this generative model. I decided to use pyro \cite{bingham2018pyro} which allows to describe the generative model in a very pytonian way and uses pyTorch \cite{paszke2017automatic} as backend for matrix and optimization calculations which makes it ideal for big datasets. \todo{rename https://github.com/SimiPro/robotjudge/blob/master/Untitled.ipynb and cite as pyro implementation}. The implementation can be seen in \todo{cite my pyro impl. }. But it just didn't work. I tried a multitude of different proposal distributions and even neural networks. It just didn't really converge nicely. I initially thought that the problem was my extension on top of LDA. But it didn't work for LDA aswell. 
 
-\subsection{Recurrant Neural Network}
+\subsection{Tweet2vec - Recurrent Neural Network}
+After the extended LDA somewhat failed I tried a multitude of other models. The one that finally worked was a neural network based solution: Tweet2Vec \cite{DhingraZFMC16}. The basic idea behind this model is that they view the character as smallest unit rather then the word as in LDA. This brings quite a few advantages: \todo{How many unique words are in the twitter dataset ? Which makes it difficult to use word based systems. }. Furthermore they assume that a tweet has some latent representation and from this latent representation they predict the hashtag. To get a loss they use cross entropy loss based on predicted hashtag versus given hashtag. The neural network is mainly built out of Bi-directional Gated Recurrent Unit (Bi-GRU) which behave similarly as LSTM's (Long short-term memory) blocks. The size of the input is reasonable constraint on the number of characters a tweet can have - 145. The embedding part of the tweet2vec neural network can be seen in Figure \ref{fig:tweet2vecembedding}. The decoder part is just a dense layer with the number of neurons equal to the number of hashtags. The output of this dense layer is then used as input for the softmax function to get the probability of each hashtag. 
+\begin{figure}
+	\centering
+	\includegraphics[width=0.7\linewidth]{images/tweet2vec_embedding}
+	\caption{Tweet2vec embedding part of the neural network.}
+	\label{fig:tweet2vecembedding}
+\end{figure}
+
 
 \section{Experiments \& Results}
 \label{sec:Experiments}
