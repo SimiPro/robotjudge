@@ -8,7 +8,6 @@ Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Database file #1: robot_writeup.bib
-Warning--I didn't find a database entry for "DBLP:journals/corr/DhingraZFMC16"
 -- IEEEtran.bst version 1.13 (2008/09/30) by Michael Shell.
 -- http://www.michaelshell.org/tex/ieeetran/bibtex/
 -- See the "IEEEtran_bst_HOWTO.pdf" manual for usage information.
@@ -18,45 +17,45 @@ Too many commas in name 1 of "Judd, Nicholas, Dan Drinkard, Jeremy Carbaugh, and
 while executing---line 2419 of file IEEEtran.bst
 
 Done.
-You've used 6 entries,
+You've used 7 entries,
             4039 wiz_defined-function locations,
-            837 strings with 8347 characters,
-and the built_in function-call counts, 3017 in all, are:
-= -- 212
-> -- 97
-< -- 0
-+ -- 48
-- -- 23
-* -- 140
-:= -- 490
-add.period$ -- 12
-call.type$ -- 6
-change.case$ -- 10
+            843 strings with 8523 characters,
+and the built_in function-call counts, 3595 in all, are:
+= -- 259
+> -- 118
+< -- 1
++ -- 58
+- -- 28
+* -- 172
+:= -- 594
+add.period$ -- 14
+call.type$ -- 7
+change.case$ -- 11
 chr.to.int$ -- 0
-cite$ -- 6
-duplicate$ -- 243
-empty$ -- 276
-format.name$ -- 26
-if$ -- 658
+cite$ -- 7
+duplicate$ -- 288
+empty$ -- 320
+format.name$ -- 32
+if$ -- 783
 int.to.chr$ -- 0
-int.to.str$ -- 6
-missing$ -- 61
-newline$ -- 41
-num.names$ -- 4
-pop$ -- 172
+int.to.str$ -- 7
+missing$ -- 71
+newline$ -- 46
+num.names$ -- 5
+pop$ -- 196
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 2
-skip$ -- 227
+skip$ -- 271
 stack$ -- 0
-substring$ -- 14
-swap$ -- 148
-text.length$ -- 0
+substring$ -- 15
+swap$ -- 179
+text.length$ -- 1
 text.prefix$ -- 0
 top$ -- 5
-type$ -- 6
+type$ -- 7
 warning$ -- 0
-while$ -- 4
-width$ -- 7
-write$ -- 72
+while$ -- 5
+width$ -- 8
+write$ -- 84
 (There were 2 error messages)

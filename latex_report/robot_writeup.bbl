@@ -51,4 +51,12 @@ A.~Paszke, S.~Gross, S.~Chintala, G.~Chanan, E.~Yang, Z.~DeVito, Z.~Lin,
   A.~Desmaison, L.~Antiga, and A.~Lerer, ``Automatic differentiation in
   {PyTorch},'' in \emph{NIPS Autodiff Workshop}, 2017.
 
+\bibitem{DhingraZFMC16}
+\BIBentryALTinterwordspacing
+B.~Dhingra, Z.~Zhou, D.~Fitzpatrick, M.~Muehl, and W.~W. Cohen, ``Tweet2vec:
+  Character-based distributed representations for social media,'' \emph{CoRR},
+  vol. abs/1605.03481, 2016. [Online]. Available:
+  \url{http://arxiv.org/abs/1605.03481}
+\BIBentrySTDinterwordspacing
+
 \end{thebibliography}
