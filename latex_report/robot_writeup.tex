@@ -6,6 +6,8 @@
 \usepackage{graphicx}	% For figure environment
 \usepackage{xcolor}
 \usepackage{booktabs}
+\usepackage{framed}
+
 
 \newcommand\todo[1]{\textcolor{red}{#1}}
 
@@ -128,7 +130,21 @@ We start with a simple one: Can we tag speeches of politicians with hashtags lea
 \subsection{Can we tag speeches of politicians with hashtags learned from twitter ? }
 \subsubsection{Data}
 As explained in previous sections I used tweet2vec. The politician set consisted of 449334 tweets which we splitted randomly into 90\% training data and 10\% testing data. I counted all the hashtags and removed all that were not in the top 500 used hashtags (from 39671 total).  In Figure \ref{fig:tweet2vectraining} one can see that we got nearly 25\% recall for tag number 1 which is quite good considering how difficult the task is (Randomly predicting one of the top 500 would result in 0.2\% recall). For the speeches I only was interested in the senators up for re-election. It is a set of 24 senators listed in table with their corresponding party and the number of speeches they gave in the years 2017 and 2018. \ref{tbl:senators}. \\
-It becomes very obvious that the dataset of speeches is very small. But it does not hinder us to tag the available speeches. To tweet2vec to be able to work on the speeches I had to cut it up into pieces of 145 and additionally I did some preprocessing like stemming, removing stop words and removing line breaks just to get a bit shorter speeches and get more content into those 145 characters.  \todo{add example of speech parts and its tags}
+It becomes very obvious that the dataset of speeches is very small. But it does not hinder us to tag the available speeches. To tweet2vec to be able to work on the speeches I had to cut it up into pieces of 145 and additionally I did some preprocessing like stemming, removing stop words and removing line breaks just to get a bit shorter speeches and get more content into those 145 characters. 
+
+\begin{framed}
+	\textbf{Senator Sanders}: \\
+	support vote pension issue million american worker percent pension promise government allow happen stand worker meeting earlier today dealing \\
+	Tags: Kavanaugh WhatAreTheyHiding NM UK IIOA
+\end{framed}
+\begin{framed}
+	\textbf{Senator Cruz}: \\
+ president authority refuse enforce president obama decree would enforce federal immigration exactly virtually every republican denounce executiv
+ \\
+	Tags: ACA healthcare NM ClimateAction ProtectOurCare
+\end{framed}
+
+I really tried to also find a positive example but I just couldn't really find one. From just checking the speeches vs the tags it does not seem to be very effective in predicting tags for speeches. I will 
 
 \subsubsection{Results}
 
