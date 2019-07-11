@@ -85,8 +85,7 @@ After the extended LDA somewhat failed I tried a multitude of other models. The 
 	\label{fig:tweet2vecembedding}
 \end{figure}
 
-% Please add the following required packages to your document preamble:
-% \usepackage{booktabs}
+
 \begin{table}[]
 	\centering
 	\begin{tabular}{@{}lll@{}}
@@ -132,6 +131,11 @@ We start with a simple one: Can we tag speeches of politicians with hashtags lea
 As explained in previous sections I used tweet2vec. The politician set consisted of 449334 tweets which we splitted randomly into 90\% training data and 10\% testing data. I counted all the hashtags and removed all that were not in the top 500 used hashtags (from 39671 total).  In Figure \ref{fig:tweet2vectraining} one can see that we got nearly 25\% recall for tag number 1 which is quite good considering how difficult the task is (Randomly predicting one of the top 500 would result in 0.2\% recall). For the speeches I only was interested in the senators up for re-election. It is a set of 24 senators listed in table with their corresponding party and the number of speeches they gave in the years 2017 and 2018. \ref{tbl:senators}. \\
 It becomes very obvious that the dataset of speeches is very small. But it does not hinder us to tag the available speeches. To tweet2vec to be able to work on the speeches I had to cut it up into pieces of 145 and additionally I did some preprocessing like stemming, removing stop words and removing line breaks just to get a bit shorter speeches and get more content into those 145 characters. 
 
+
+\subsubsection{Results}
+
+In the boxes one can see the input for the trained tweet2vec aswell as the tags tweet2vec predicted. 
+
 \begin{framed}
 	\textbf{Senator Sanders}: \\
 	support vote pension issue million american worker percent pension promise government allow happen stand worker meeting earlier today dealing \\
@@ -144,11 +148,34 @@ It becomes very obvious that the dataset of speeches is very small. But it does 
 	Tags: ACA healthcare NM ClimateAction ProtectOurCare
 \end{framed}
 
-I really tried to also find a positive example but I just couldn't really find one. From just checking the speeches vs the tags it does not seem to be very effective in predicting tags for speeches. I will 
-
-\subsubsection{Results}
+I really tried to also find a positive example but I just couldn't really find one. From just checking the speeches vs the tags it does not seem to be very effective in predicting tags for speeches. 
 
  
+\subsection{How does being before an election affect the tags a politican uses ? }
+After wasting a lot of time on the tagging speeches part I concentrated the little rest of my time on only analyzing the raw twitter data. And one can say that for some senators definitely tweets differently and is affected when having an election. I picked a democratic senator and a republican senator to showcase how tweets change. Local topic get very important for senators and most tweets will get tagged with the state their from. In figure \ref{fig:hironobeforeafterelection} its the case for the 2012 election where Senator Hirono wants to get elected for Hawaii. In \ref{fig:senatorfischerbeforeafterelection} one can see the figure of number of tweets at a specific date from Senator Fisher of the republicans. Shortly before the election Nebraska specific tweets definitely spiked. But it is definitely not en if and only if indicator.  There are a lot of Senators who don't care about tweeting for local problems e.g. Senator Warren and Senator Sanders. The plots for all the other Senators can be checked in my github repository. \todo{make a link to the github repo in the introduction}. But not only could it be that the tweet behaviour does not change but that a Senator could start tweeting about local events with no local election coming up. An example for this is Senator Cruz who had a hard election in Texas. But in the year of the election there was also a hurrican as strong as all 10 years and he tweeted a lot about that in that time frame seen in Figure \ref{fig:senatorcruztop5tweetsmid20172018}.
+ 
+\begin{figure}
+	\centering
+	\includegraphics[width=0.7\linewidth]{images/hirono_before_after_election}
+	\caption{Cumulative sum of top 5 topics of senator Hirono from Hawaii. }
+	\label{fig:hironobeforeafterelection}
+\end{figure}
+
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.7\linewidth]{images/senator_fischer_before_after_election}
+	\caption{Senator Fischer from Nebraska number of tweets from 2012 - 2019 counted at specific points in time. Only tweets counted with tags of top 8 tags. \#ne = nebraska, \#neag = nebraska agrar, \#lovene = love nebraska.   }
+	\label{fig:senatorfischerbeforeafterelection}
+\end{figure}
+\begin{figure}
+	\centering
+	\includegraphics[width=0.7\linewidth]{images/senator_cruz_top5_tweets_mid2017_2018}
+	\caption{Senator Cruz from Texas top 5 used tags tweets distribution from mid 2017 to end 2018.}
+	\label{fig:senatorcruztop5tweetsmid20172018}
+\end{figure}
+
+
 \subsection{Hashtag analysis}
 
 
@@ -159,7 +186,7 @@ I really tried to also find a positive example but I just couldn't really find o
 \begin{figure}
 	\centering
 	\includegraphics[width=0.7\linewidth]{images/tweet2vec_training}
-	\caption{"Proof" of training for tweet2vec.}
+	\caption{Results for testing on validation set. (10\% of original dataset).}
 	\label{fig:tweet2vectraining}
 \end{figure}
 
@@ -168,6 +195,10 @@ I really tried to also find a positive example but I just couldn't really find o
 
 \section{Discussion}
 \label{sec:Discussion}
+
+\todo{}
+
+\todo{- just very few speeches data. }
 
 \section{Summary}
 \label{sec:Summary}

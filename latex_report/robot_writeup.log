@@ -1,4 +1,4 @@
-This is LuaTeX, Version 1.0.4 (TeX Live 2017/Debian)  (format=lualatex 2018.12.26)  9 JUL 2019 13:50
+This is LuaTeX, Version 1.0.4 (TeX Live 2017/Debian)  (format=lualatex 2018.12.26)  11 JUL 2019 07:48
  restricted system commands enabled.
 **robot_writeup.tex
 (./robot_writeup.tex
@@ -157,6 +157,14 @@ Package: booktabs 2016/04/27 v1.618033 publication quality tables
 \@lastruleclass=\count94
 \@thisrulewidth=\dimen131
 )
+(/usr/share/texlive/texmf-dist/tex/latex/framed/framed.sty
+Package: framed 2011/10/22 v 0.96: framed or shaded text with page breaks
+\OuterFrameSep=\skip44
+\fb@frw=\dimen132
+\fb@frh=\dimen133
+\FrameRule=\dimen134
+\FrameSep=\dimen135
+)
 (./robot_writeup.aux
 
 LaTeX Warning: Label `fig:ldaplate' multiply defined.
@@ -164,30 +172,30 @@ LaTeX Warning: Label `fig:ldaplate' multiply defined.
 )
 \openout1 = robot_writeup.aux
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 12.
-LaTeX Font Info:    ... okay on input line 12.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 12.
-LaTeX Font Info:    ... okay on input line 12.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 12.
-LaTeX Font Info:    ... okay on input line 12.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 12.
-LaTeX Font Info:    ... okay on input line 12.
-LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 12.
-LaTeX Font Info:    ... okay on input line 12.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 12.
-LaTeX Font Info:    ... okay on input line 12.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 12.
-LaTeX Font Info:    ... okay on input line 12.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 14.
+LaTeX Font Info:    ... okay on input line 14.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 14.
+LaTeX Font Info:    ... okay on input line 14.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 14.
+LaTeX Font Info:    ... okay on input line 14.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 14.
+LaTeX Font Info:    ... okay on input line 14.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 14.
+LaTeX Font Info:    ... okay on input line 14.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 14.
+LaTeX Font Info:    ... okay on input line 14.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 14.
+LaTeX Font Info:    ... okay on input line 14.
  (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count95
-\scratchdimen=\dimen132
+\scratchdimen=\dimen136
 \scratchbox=\box27
 \nofMPsegments=\count96
 \nofMParguments=\count97
 \everyMPshowfont=\toks16
 \MPscratchCnt=\count98
-\MPscratchDim=\dimen133
+\MPscratchDim=\dimen137
 \MPnumerator=\count99
 \makeMPintoPDFobject=\count100
 \everyMPtoPDFconversion=\toks17
@@ -243,16 +251,16 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 
 ))
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <14> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 20.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 22.
 <images/lda_plate.png, id=1, 378.41376pt x 186.6975pt>
 File: images/lda_plate.png Graphic file (type png)
 <use images/lda_plate.png>
-Package luatex.def Info: images/lda_plate.png  used on input line 60.
+Package luatex.def Info: images/lda_plate.png  used on input line 62.
 (luatex.def)             Requested size: 170.73712pt x 84.23529pt.
 <images/extended_lda.png, id=2, 790.955pt x 632.3625pt>
 File: images/extended_lda.png Graphic file (type png)
 <use images/extended_lda.png>
-Package luatex.def Info: images/extended_lda.png  used on input line 69.
+Package luatex.def Info: images/extended_lda.png  used on input line 71.
 (luatex.def)             Requested size: 170.73712pt x 136.50528pt.
 
 [1
@@ -263,30 +271,50 @@ Non-PDF special ignored!{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
 <images/tweet2vec_embedding.png, id=12, 740.7675pt x 574.145pt>
 File: images/tweet2vec_embedding.png Graphic file (type png)
 <use images/tweet2vec_embedding.png>
-Package luatex.def Info: images/tweet2vec_embedding.png  used on input line 81.
+Package luatex.def Info: images/tweet2vec_embedding.png  used on input line 83.
 (luatex.def)             Requested size: 170.73712pt x 132.33092pt.
 
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 88.
+               Default added (so using `tbp') on input line 90.
 
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 90.
+(Font)              <8> on input line 92.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 90.
+(Font)              <6> on input line 92.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 90.
+(Font)              <5> on input line 92.
 [2<./images/lda_plate.png><./images/extended_lda.png><./images/tweet2vec_embeddi
 ng.png>]
-Underfull \hbox (badness 1412) in paragraph at lines 130--132
+Underfull \hbox (badness 1412) in paragraph at lines 132--134
  \OT1/ptm/m/it/10 1) Data: [][]\OT1/ptm/m/n/10 As ex-plained in pre-vi-ous sec-
 tions I used
  []
 
-<images/tweet2vec_training.png, id=16, 796.9775pt x 201.75375pt>
+<images/hirono_before_after_election.png, id=16, 702.625pt x 451.6875pt>
+File: images/hirono_before_after_election.png Graphic file (type png)
+<use images/hirono_before_after_election.png>
+Package luatex.def Info: images/hirono_before_after_election.png  used on input 
+line 160.
+(luatex.def)             Requested size: 170.73712pt x 109.75807pt.
+<images/senator_fischer_before_after_election.png, id=17, 702.625pt x 451.6875pt
+>
+File: images/senator_fischer_before_after_election.png Graphic file (type png)
+<use images/senator_fischer_before_after_election.png>
+Package luatex.def Info: images/senator_fischer_before_after_election.png  used 
+on input line 168.
+(luatex.def)             Requested size: 170.73712pt x 109.75807pt.
+<images/senator_cruz_top5_tweets_mid2017_2018.png, id=18, 702.625pt x 451.6875pt
+>
+File: images/senator_cruz_top5_tweets_mid2017_2018.png Graphic file (type png)
+<use images/senator_cruz_top5_tweets_mid2017_2018.png>
+Package luatex.def Info: images/senator_cruz_top5_tweets_mid2017_2018.png  used 
+on input line 174.
+(luatex.def)             Requested size: 170.73712pt x 109.75807pt.
+<images/tweet2vec_training.png, id=19, 796.9775pt x 201.75375pt>
 File: images/tweet2vec_training.png Graphic file (type png)
 <use images/tweet2vec_training.png>
-Package luatex.def Info: images/tweet2vec_training.png  used on input line 145.
+Package luatex.def Info: images/tweet2vec_training.png  used on input line 189.
 (luatex.def)             Requested size: 170.73712pt x 43.2192pt.
 (./robot_writeup.bbl
 LaTeX Font Info:    External font `cmex10' loaded for size
@@ -296,7 +324,8 @@ Underfull \hbox (badness 10000) in paragraph at lines 25--28
 \OT1/ptm/m/n/9 https://www.omnicoreagency.com/twitter-[]statistics/$, 01.2019,
  []
 
-
+[3<./images/hirono_before_after_election.png><./images/senator_fischer_before_af
+ter_election.png>]
 Underfull \hbox (badness 4132) in paragraph at lines 38--42
 \OT1/ptm/m/n/9 unitedstates/congressional-[]record$, 2017, [On-line; ac-cessed
  []
@@ -313,29 +342,32 @@ Before submitting the final camera ready copy, remember to:
  uses only Type 1 fonts and that every step in the generation
  process uses the appropriate paper size.
 
-[3<./images/tweet2vec_training.png>] (./robot_writeup.aux)
+[4
+
+<./images/senator_cruz_top5_tweets_mid2017_2018.png><./images/tweet2vec_training
+.png>] (./robot_writeup.aux)
 
 LaTeX Warning: There were multiply-defined labels.
 
 )
 
 Here is how much of LuaTeX's memory you used:
- 3079 strings out of 494480
+ 3175 strings out of 494480
  100000,128383 words of node,token memory allocated
- 571 words of node memory still in use:
-   2 hlist, 1 vlist, 1 rule, 2 glue, 45 kern, 46 glue_spec, 1 write nodes
-   avail lists: 2:20,3:197,4:39,5:185,6:4703,7:1279,8:54,9:216,10:18,11:337
- 6943 multiletter control sequences out of 65536+600000
+ 626 words of node memory still in use:
+   2 hlist, 1 vlist, 1 rule, 2 glue, 55 kern, 47 glue_spec, 1 write nodes
+   avail lists: 2:20,3:242,4:39,5:217,6:5312,7:1279,8:65,9:216,10:19,11:397
+ 7005 multiletter control sequences out of 65536+600000
  136 fonts using 5629231 bytes
- 41i,9n,35p,1247b,326s stack positions out of 5000i,500n,10000p,200000b,100000s
+ 41i,9n,35p,1544b,326s stack positions out of 5000i,500n,10000p,200000b,100000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texlive/t
 exmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/
 type1/urw/times/utmbi8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times
 /utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on robot_writeup.pdf (3 pages, 214225 bytes).
+Output written on robot_writeup.pdf (4 pages, 316926 bytes).
 
-PDF statistics: 36 PDF objects out of 1000 (max. 8388607)
- 21 compressed objects within 1 object stream
+PDF statistics: 45 PDF objects out of 1000 (max. 8388607)
+ 23 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 131072)
  1 words of extra memory for PDF output out of 10000 (max. 100000000)
 
