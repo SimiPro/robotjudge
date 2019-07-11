@@ -7,8 +7,11 @@
 \usepackage{xcolor}
 \usepackage{booktabs}
 \usepackage{framed}
+\usepackage{mathtools}
+\usepackage{amssymb}
 
 
+\newcommand\R{\mathbb{R}}
 \newcommand\todo[1]{\textcolor{red}{#1}}
 
 \begin{document}
@@ -56,7 +59,20 @@ The congressional records and therefore the speeches can all be publicly accesse
 In the first part of this section I will tell shortly about the failure and massive time loss that resulted in trying to adapt LDA to be used with the twitter data and in the second part a short summary of the neural network based method that finally worked for predicting hash tags. 
 \subsection{Latent Dirichlet Allocation (LDA)}
 \subsubsection{Standard LDA}
-LDA was one of the algorithms for topic models that got presented in class. The generative model to generate a word makes it very simple to think about. Given a document sample a topic and for this topic sample a word. And the word is the thing we observe and we can use to learn the corresponding distributions. 
+LDA was one of the algorithms for topic models that got presented in class. The generative model to generate a word makes it very simple to think about. Given a document sample a topic and for this topic sample a word. And the word is the thing we observe and we can use to learn the corresponding distributions. \\
+\textbf{More formally} the process depicted in Figure \ref{fig:ldaplate} is defined as: 
+
+\small
+\begin{align*}
+&\textit{Given } \alpha, \beta \\
+&\textit{Sample topic-distribution: } \theta_m \sim Dir(\alpha)\\
+&\textit{Sample word-in-topic-distribution: } \phi_k \sim Dir(\beta) \\
+&\textit{Sample word-topic from topic-distribution: } z_{mn} \sim Cat(\theta_m) \\
+&\textit{Sample word from word-in-topic-distribution: } w_{mn} \sim Cat(\phi[z_{mn}])
+\end{align*}
+\normalsize
+Where $\alpha \in \R^K, \beta \in \R^{|V|}$ are the parameters for the dirichlet distribution. 
+
 \begin{figure}
 	\centering
 	\includegraphics[width=0.7\linewidth]{images/lda_plate}
@@ -64,17 +80,49 @@ LDA was one of the algorithms for topic models that got presented in class. The 
 	\label{fig:ldaplate}
 \end{figure}
 
+
 \subsubsection{Extended LDA}
-So naturally I thought it should be simple to extend LDA so that it can also predict hash tags in the following way. For some document and its document-topic distribution I sample 2 topics and then for the topic-word distribution I sample a word and additionally to the topic-word distribution I just have an topic-hashtag distribution of which I sample a hashtag. And the we can learn the correct distributions since we observe both word and hashtag. 
+So naturally I thought it should be simple to extend LDA so that it can also predict hash tags in the following way. For some document and its document-topic distribution I sample 2 topics and then for the topic-word distribution I sample a word and additionally to the topic-word distribution I just have an topic-hashtag distribution of which I sample a hashtag. And the we can learn the correct distributions since we observe both word and hashtag. \textbf{More formally} we have only 3 additions (inserted in red) to the process as defined in normal lda: 
+
+\tiny
+\begin{align*}
+&\textit{Given } \alpha, \beta, \gamma \\
+&\textit{Sample topic-distribution: } \theta_m \sim Dir(\alpha)\\
+&\textit{Sample word-in-topic-distribution: } \phi_k \sim Dir(\beta) \\
+& \textcolor{blue}{\textit{Sample hashtag-in-topic-distribution: }} \kappa_k \sim Dir(\gamma) \\
+&\textit{Sample word-topic from topic-distribution: } z^{(w)}_{mn} \sim Cat(\theta_m) \\
+&\textit{Sample word from word-in-topic-distribution: } w_{mn} \sim Cat(\phi[z_{mn}])\\
+&\textcolor{blue}{\textit{Hashtag-topic from topic-distribution: }} z^{(t)}_{mt} \sim Cat(\theta_m) \\
+&\textcolor{blue}{\textit{Hashtag from hashtag-in-topic-distribution: }} t_{mn} \sim Cat(\kappa[z_{mn}])\\
+\end{align*}
+\normalsize
+Where $\alpha \in \R^K, \beta \in \R^{|V|}, \gamma \in \R^K$ are the parameters for the dirichlet distribution. The plate graphics in Figure \ref{fig:ldaplate2} depicts the whole process.
 \begin{figure}
 	\centering
 	\includegraphics[width=0.7\linewidth]{images/extended_lda}
 	\caption{Plate diagram of extended version of LDA with additional distribution for hashtags for a given topic. }
-	\label{fig:ldaplate}
+	\label{fig:ldaplate2}
 \end{figure}
 
 \subsection{Training}
-The plan ready I had to find some framework that allowed me to implement and train this generative model. I decided to use pyro \cite{bingham2018pyro} which allows to describe the generative model in a very pytonian way and uses pyTorch \cite{paszke2017automatic} as backend for matrix and optimization calculations which makes it ideal for big datasets. \todo{rename https://github.com/SimiPro/robotjudge/blob/master/Untitled.ipynb and cite as pyro implementation}. The implementation can be seen in \todo{cite my pyro impl. }. But it just didn't work. I tried a multitude of different proposal distributions and even neural networks. It just didn't really converge nicely. I initially thought that the problem was my extension on top of LDA. But it didn't work for LDA aswell. 
+Now the generative model is only the first step because we're not interested in generating words. We're interested in the so called posteriori distribution: Given words what are the topic-distribution of a document and then from that generate hashtags for the document. This means that we have a so called inference problem and normally one applies bayes formula to get the topic distribution: \[ p(\theta_m | w) = \frac{p(w | \theta_m)p(\theta_m)}{p(w)} \] But the so called evidence term $p(w) = \int_{\theta_m} p(w | \theta_m)p(\theta_m) $ is very hard to compute because every new possible topic increases computing time exponentially so this is nearly impossible to compute already for very little amount of topics. 
+Researchers have proposed different methods to approximate this posteriori distribution with other methods and there are a lot of software frameworks that automatically calculate the posterior distirbution. I decided to use pyro \cite{bingham2018pyro} which allows to describe the generative model in a very pytonian way and uses pyTorch \cite{paszke2017automatic} as backend for matrix and optimization calculations which makes it ideal for big datasets. \todo{rename https://github.com/SimiPro/robotjudge/blob/master/Untitled.ipynb and cite as pyro implementation}. The implementation can be seen in \todo{cite my pyro impl. }.   The optimization process is either via a monte carlo method (MCMC) or via Variational Inference (VI). Bot methods are explained in the next two subsections very briefly. 
+
+\subsubsection{Variational Inference}
+The big idea in Variational Inference (VI) is to propose a proposal distribution $q_\lambda(\theta_m)$ which gets adapted via parameter $\lambda$ to be as close as possible to the real distribution we care about $p(\theta_m | w)$. Closeness is measured via kullback-leibler divergence but this can't be calculated directly most of the time so alternatively one maximizes the so called ELBO which minimizes the kullback-leibler divergence. 
+\[ ELBO = \mathbb{E}_{q_\lambda(\theta_m)} [log p(\theta_m, w) - log q_{\lambda}(\theta_m)] \]
+Then to maximize the ELBO in most software packages one calculates the gradient and applies one of the nowaways many optimization algorithms. (Adam, RMSprop, SGD, etc.)\\
+Since I used pyro to implement this, in pyro $q_\lambda$ is described in the so called "guide" function and the joint distribution $p(\theta_m, w)$ is described in the so called "model". 
+
+\subsubsection{Markov Chain Monte Carlo}
+Markov Chain Monte Carlo (MCMC) algorithms are a bit more involved in theory and there are a lot more flavors then in variational inference. But the underlying idea is the same for them aswell. MCMC algorithms propose a markov chain from which they draw correlated samples when moving from state to state in this chain but which promises to converge to the correct distribution. Now one may ask why we do not use this all the time when it converges to the correct distribution ? Sadly such a chain has a so called "warm up" stage where we have to throw away samples up to the point where the distribution is burned it and we do not know how long this warm up phase is so most of the time one tests this empirically.\\
+
+
+
+\subsubsection{Training Result}
+
+But it just didn't work. I tried a multitude of different proposal distributions and even neural networks. It just didn't really converge nicely. I initially thought that the problem was my extension on top of LDA. But it didn't work for LDA aswell. 
+
 
 \subsection{Tweet2vec - Recurrent Neural Network}
 After the extended LDA somewhat failed I tried a multitude of other models. The one that finally worked was a neural network based solution: Tweet2Vec \cite{DhingraZFMC16}. The basic idea behind this model is that they view the character as smallest unit rather then the word as in LDA. This brings quite a few advantages: \todo{How many unique words are in the twitter dataset ? Which makes it difficult to use word based systems. }. Furthermore they assume that a tweet has some latent representation and from this latent representation they predict the hashtag. To get a loss they use cross entropy loss based on predicted hashtag versus given hashtag. The neural network is mainly built out of Bi-directional Gated Recurrent Unit (Bi-GRU) which behave similarly as LSTM's (Long short-term memory) blocks. The size of the input is reasonable constraint on the number of characters a tweet can have - 145. The embedding part of the tweet2vec neural network can be seen in Figure \ref{fig:tweet2vecembedding}. The decoder part is just a dense layer with the number of neurons equal to the number of hashtags. The output of this dense layer is then used as input for the softmax function to get the probability of each hashtag. 
