@@ -1,14 +1,11 @@
-This is LuaTeX, Version 1.0.4 (TeX Live 2017/Debian)  (format=lualatex 2018.12.26)  11 JUL 2019 11:39
- restricted system commands enabled.
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.3.16)  12 JUL 2019 05:26
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
 **robot_writeup.tex
 (./robot_writeup.tex
 LaTeX2e <2017-04-15>
-[\directlua]:1: module 'luaotfload-main' not found:
-	no field package.preload['luaotfload-main']
-	[kpse lua searcher] file not found: 'luaotfload-main'
-	[kpse C searcher] file not found: 'luaotfload-main'
-Error in luaotfload: reverting to OT1
-Babel <3.18> and hyphenation patterns for 1 language(s) loaded.
+Babel <3.18> and hyphenation patterns for 3 language(s) loaded.
 (./IEEEtran.cls
 Document Class: IEEEtran 2007/03/05 V1.7a by Michael Shell
 -- See the "IEEEtran_HOWTO" manual for usage information.
@@ -19,11 +16,12 @@ Document Class: IEEEtran 2007/03/05 V1.7a by Michael Shell
 \@IEEEtrantmpcountB=\count80
 \@IEEEtrantmptoksA=\toks14
 LaTeX Font Info:    Try loading font information for OT1+ptm on input line 373.
+
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1ptm.fd
 File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
 )
 -- Using 8.5in x 11in (letter) paper.
--- Using DVI output.
+-- Using PDF output.
 \@IEEEnormalsizeunitybaselineskip=\dimen104
 -- This is a 10 point document.
 \CLASSINFOnormalsizebaselineskip=\dimen105
@@ -112,10 +110,10 @@ Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
 (/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
 File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
 )
-Package graphics Info: Driver file: luatex.def on input line 99.
+Package graphics Info: Driver file: pdftex.def on input line 99.
 
-(/usr/share/texlive/texmf-dist/tex/latex/graphics-def/luatex.def
-File: luatex.def 2018/01/08 v1.0l Graphics/color driver for luatex
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-def/pdftex.def
+File: pdftex.def 2018/01/08 v1.0l Graphics/color driver for pdftex
 ))
 \Gin@req@height=\dimen117
 \Gin@req@width=\dimen118
@@ -126,7 +124,7 @@ Package: xcolor 2016/05/11 v2.12 LaTeX color extensions (UK)
 (/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/color.cfg
 File: color.cfg 2016/01/02 v1.6 sample color configuration
 )
-Package xcolor Info: Driver file: luatex.def on input line 225.
+Package xcolor Info: Driver file: pdftex.def on input line 225.
 Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1348.
 Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1352.
 Package xcolor Info: Model `RGB' extended on input line 1364.
@@ -267,7 +265,7 @@ LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 (Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
 ))
 (./robot_writeup.aux)
-\openout1 = robot_writeup.aux
+\openout1 = `robot_writeup.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 17.
 LaTeX Font Info:    ... okay on input line 17.
@@ -276,8 +274,6 @@ LaTeX Font Info:    ... okay on input line 17.
 LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 17.
 LaTeX Font Info:    ... okay on input line 17.
 LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 17.
 LaTeX Font Info:    ... okay on input line 17.
 LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 17.
 LaTeX Font Info:    ... okay on input line 17.
@@ -323,124 +319,142 @@ Package: etexcmds 2016/05/16 v1.6 Avoid name clashes with e-TeX commands (HO)
 
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifluatex.sty
 Package: ifluatex 2016/05/16 v1.4 Provides the ifluatex switch (HO)
-Package ifluatex Info: LuaTeX detected.
-))))
+Package ifluatex Info: LuaTeX not detected.
+)
+Package etexcmds Info: Could not find \expanded.
+(etexcmds)             That can mean that you are not using pdfTeX 1.50 or
+(etexcmds)             that some package has redefined \expanded.
+(etexcmds)             In the latter case, load this package earlier.
+)))
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
-Package: pdftexcmds 2018/01/21 v0.26 Utility functions of pdfTeX for LuaTeX (HO)
-
+Package: pdftexcmds 2018/01/21 v0.26 Utility functions of pdfTeX for LuaTeX (HO
+)
 
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifpdf.sty
 Package: ifpdf 2017/03/15 v3.2 Provides the ifpdf switch
 )
+Package pdftexcmds Info: LuaTeX not detected.
 Package pdftexcmds Info: \pdf@primitive is available.
 Package pdftexcmds Info: \pdf@ifprimitive is available.
 Package pdftexcmds Info: \pdfdraftmode found.
-\pdftexcmds@toks=\toks23
 )
-Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 43
-8.
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
+38.
 Package grfext Info: Graphics extension search list:
-(grfext)             [.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPEG
-,.JBIG2,.JB2,.eps]
+(grfext)             [.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPE
+G,.JBIG2,.JB2,.eps]
 (grfext)             \AppendGraphicsExtensions on input line 456.
 
 (/usr/share/texlive/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
-File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
-
+File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
+e
 ))
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <14> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 25.
-LaTeX Font Info:    Try loading font information for U+msa on input line 66.
+LaTeX Font Info:    Try loading font information for U+msa on input line 67.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 66.
+LaTeX Font Info:    Try loading font information for U+msb on input line 67.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-Overfull \hbox (6.89095pt too wide) detected at line 72
+Overfull \hbox (6.89095pt too wide) detected at line 73
 []
  []
 
-<images/lda_plate.png, id=1, 378.41376pt x 186.6975pt>
-File: images/lda_plate.png Graphic file (type png)
-<use images/lda_plate.png>
-Package luatex.def Info: images/lda_plate.png  used on input line 78.
-(luatex.def)             Requested size: 170.73712pt x 84.23529pt.
-[1
-Non-PDF special ignored!{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
+[1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
 
 
 ]
-<images/extended_lda.png, id=20, 971.63pt x 915.42pt>
+<images/lda_plate.png, id=10, 378.41376pt x 186.6975pt>
+File: images/lda_plate.png Graphic file (type png)
+<use images/lda_plate.png>
+Package pdftex.def Info: images/lda_plate.png  used on input line 79.
+(pdftex.def)             Requested size: 170.73712pt x 84.23529pt.
+
+Overfull \hbox (6.89095pt too wide) detected at line 98
+[]
+ []
+
+<images/extended_lda.png, id=11, 971.63pt x 915.42pt>
 File: images/extended_lda.png Graphic file (type png)
 <use images/extended_lda.png>
-Package luatex.def Info: images/extended_lda.png  used on input line 102.
-(luatex.def)             Requested size: 170.73712pt x 160.8574pt.
+Package pdftex.def Info: images/extended_lda.png  used on input line 103.
+(pdftex.def)             Requested size: 170.73712pt x 160.8574pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 118--119
+Underfull \hbox (badness 1406) in paragraph at lines 109--111
+\OT1/ptm/m/n/10 is very hard to com-pute be-cause ev-ery new pos-si-ble
+ []
+
+
+Underfull \hbox (badness 3029) in paragraph at lines 109--111
+\OT1/ptm/m/n/10 topic in-creases com-put-ing time ex-po-nen-tially so this
+ []
+
+
+Underfull \hbox (badness 1546) in paragraph at lines 109--111
+\OT1/ptm/m/n/10 which makes it ideal for big datasets. []Todo: re-name
+ []
+
+
+Overfull \hbox (21.17523pt too wide) in paragraph at lines 109--111
+\OT1/ptm/m/n/10 https://github.com/SimiPro/robotjudge/blob/master/Untitled.ipyn
+b
+ []
+
+[2 <./images/lda_plate.png> <./images/extended_lda.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 119--120
 
  []
 
-[2<./images/lda_plate.png><./images/extended_lda.png>]
-<images/tweet2vec_embedding.png, id=30, 740.7675pt x 574.145pt>
+<images/tweet2vec_embedding.png, id=29, 740.7675pt x 574.145pt>
 File: images/tweet2vec_embedding.png Graphic file (type png)
 <use images/tweet2vec_embedding.png>
-Package luatex.def Info: images/tweet2vec_embedding.png  used on input line 131.
-
-(luatex.def)             Requested size: 170.73712pt x 132.33092pt.
-
+Package pdftex.def Info: images/tweet2vec_embedding.png  used on input line 132
+.
+(pdftex.def)             Requested size: 170.73712pt x 132.33092pt.
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 137.
+               Default added (so using `tbp') on input line 138.
 
-
-Underfull \hbox (badness 1412) in paragraph at lines 179--181
- \OT1/ptm/m/it/10 1) Data: [][]\OT1/ptm/m/n/10 As ex-plained in pre-vi-ous sec-
-tions I used
- []
-
-[3<./images/tweet2vec_embedding.png>]
-<images/hirono_before_after_election.png, id=34, 702.625pt x 451.6875pt>
+[3 <./images/tweet2vec_embedding.png>]
+<images/hirono_before_after_election.png, id=33, 702.625pt x 451.6875pt>
 File: images/hirono_before_after_election.png Graphic file (type png)
 <use images/hirono_before_after_election.png>
-Package luatex.def Info: images/hirono_before_after_election.png  used on input 
-line 207.
-(luatex.def)             Requested size: 170.73712pt x 109.75807pt.
-<images/senator_fischer_before_after_election.png, id=35, 702.625pt x 451.6875pt
->
+Package pdftex.def Info: images/hirono_before_after_election.png  used on input
+ line 210.
+(pdftex.def)             Requested size: 170.73712pt x 109.75807pt.
+<images/senator_fischer_before_after_election.png, id=35, 702.625pt x 451.6875p
+t>
 File: images/senator_fischer_before_after_election.png Graphic file (type png)
 <use images/senator_fischer_before_after_election.png>
-Package luatex.def Info: images/senator_fischer_before_after_election.png  used 
-on input line 215.
-(luatex.def)             Requested size: 170.73712pt x 109.75807pt.
-<images/senator_cruz_top5_tweets_mid2017_2018.png, id=36, 702.625pt x 451.6875pt
->
+Package pdftex.def Info: images/senator_fischer_before_after_election.png  used
+ on input line 218.
+(pdftex.def)             Requested size: 170.73712pt x 109.75807pt.
+<images/senator_cruz_top5_tweets_mid2017_2018.png, id=36, 702.625pt x 451.6875p
+t>
 File: images/senator_cruz_top5_tweets_mid2017_2018.png Graphic file (type png)
 <use images/senator_cruz_top5_tweets_mid2017_2018.png>
-Package luatex.def Info: images/senator_cruz_top5_tweets_mid2017_2018.png  used 
-on input line 221.
-(luatex.def)             Requested size: 170.73712pt x 109.75807pt.
+Package pdftex.def Info: images/senator_cruz_top5_tweets_mid2017_2018.png  used
+ on input line 224.
+(pdftex.def)             Requested size: 170.73712pt x 109.75807pt.
 <images/tweet2vec_training.png, id=37, 796.9775pt x 201.75375pt>
 File: images/tweet2vec_training.png Graphic file (type png)
 <use images/tweet2vec_training.png>
-Package luatex.def Info: images/tweet2vec_training.png  used on input line 236.
-(luatex.def)             Requested size: 170.73712pt x 43.2192pt.
+Package pdftex.def Info: images/tweet2vec_training.png  used on input line 239.
+
+(pdftex.def)             Requested size: 170.73712pt x 43.2192pt.
  (./robot_writeup.bbl
 Underfull \hbox (badness 10000) in paragraph at lines 25--28
-\OT1/ptm/m/n/9 https://www.omnicoreagency.com/twitter-[]statistics/$, 01.2019,
+\OT1/ptm/m/n/9 https : / / www . omnicoreagency . com / twitter-[]statistics/$,
+ 01.2019,
  []
 
-[4<./images/hirono_before_after_election.png><./images/senator_fischer_before_af
-ter_election.png><./images/senator_cruz_top5_tweets_mid2017_2018.png><./images/t
-weet2vec_training.png>]
-Underfull \hbox (badness 4132) in paragraph at lines 38--42
-\OT1/ptm/m/n/9 unitedstates/congressional-[]record$, 2017, [On-line; ac-cessed
- []
-
-)
+[4 <./images/hirono_before_after_election.png> <./images/senator_fischer_before
+_after_election.png>])
 
 ** Conference Paper **
 Before submitting the final camera ready copy, remember to:
@@ -454,39 +468,38 @@ Before submitting the final camera ready copy, remember to:
 
 [5
 
-] (./robot_writeup.aux))
-
-Here is how much of LuaTeX's memory you used:
- 4689 strings out of 494480
- 100000,154059 words of node,token memory allocated
- 834 words of node memory still in use:
-   6 hlist, 2 vlist, 2 rule, 2 glue, 80 kern, 53 glue_spec, 1 write nodes
-   avail lists: 2:22,3:210,4:51,5:216,6:4926,7:1492,8:65,9:396,10:20,11:365
- 8411 multiletter control sequences out of 65536+600000
- 160 fonts using 6621095 bytes
- 41i,11n,35p,1544b,338s stack positions out of 5000i,500n,10000p,200000b,100000s
-{/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texlive/t
-exmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-di
-st/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/font
-s/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/texlive/texmf-dist/fonts/type1/
-public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/a
-msfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/
-cm/cmmi9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10
-.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></us
-r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/t
-exlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/share/texlive/te
-xmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dis
-t/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/share/texlive/texmf-dist/fonts/
-type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/pu
-blic/amsfonts/cm/cmsy9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/ams
-fonts/symbols/msbm10.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/ut
-mb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></usr/
-share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/te
-xmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on robot_writeup.pdf (5 pages, 469479 bytes).
-
-PDF statistics: 108 PDF objects out of 1000 (max. 8388607)
- 70 compressed objects within 1 object stream
- 0 named destinations out of 1000 (max. 131072)
- 1 words of extra memory for PDF output out of 10000 (max. 100000000)
+ <./images/senator_cruz_top5_tweets_mid2017_2018.png> <./images/tweet2vec_train
+ing.png>] (./robot_writeup.aux) ) 
+Here is how much of TeX's memory you used:
+ 4299 strings out of 494923
+ 63429 string characters out of 6180742
+ 133371 words of memory out of 5000000
+ 7531 multiletter control sequences out of 15000+600000
+ 45999 words of font info for 96 fonts, out of 8000000 for 9000
+ 14 hyphenation exceptions out of 8191
+ 41i,11n,35p,1651b,307s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/share/texlive/texmf-dist/fonts/enc/dvips
+/base/8r.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex
+10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb
+></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/
+share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/t
+exlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/
+texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/share/texlive/texmf-d
+ist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fon
+ts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1
+/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/
+amsfonts/cm/cmr9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
+/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cm
+sy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb
+></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+</usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/tex
+live/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></usr/share/texlive/texmf-dis
+t/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/u
+rw/times/utmri8a.pfb>
+Output written on robot_writeup.pdf (5 pages, 459336 bytes).
+PDF statistics:
+ 105 PDF objects out of 1000 (max. 8388607)
+ 68 compressed objects within 1 object stream
+ 0 named destinations out of 1000 (max. 500000)
+ 36 words of extra memory for PDF output out of 10000 (max. 10000000)
 
