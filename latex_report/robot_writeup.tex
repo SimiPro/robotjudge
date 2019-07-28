@@ -268,6 +268,19 @@ So really in summary of this lessons: I should just be more conscious about my o
 \section{Summary}
 \label{sec:Summary}
 
+\section{Code}
+\label{sec:Code}
+In this section I describe the code and structure of the github repository for reproducability as well as proof of my work. I will use: $base\_url =$ \textit{https://github.com/SimiPro/robotjudge/blob/master/} to shorten the urls. 
+
+\subsection{Data parsing , downloading}
+
+\subsection{LDA}
+\subsubsection{News Dataset and Standard Sklearn LDA}
+After some failed attempts on twitter data I checked if sklearn's LDA works on twitter data as well as on the sklean news dataset \cite{sklearn_newsdataset}. Later I also integrated some pyro tests on the sklearn news dataset in this file. Those experiments were conducted in \textit{baseurl/lda\_sklearn.ipynb}
+\subsubsection{Final Pyro Model on Twitter Data}
+The final results and experiments for LDA with pyro are safed in \textit{baseurl/pyro\_lda\_final.ipynb}.
+
+\subsection{tweet2vec}
 
 
 \bibliographystyle{IEEEtran}

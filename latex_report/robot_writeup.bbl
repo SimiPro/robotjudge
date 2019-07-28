@@ -59,4 +59,9 @@ B.~Dhingra, Z.~Zhou, D.~Fitzpatrick, M.~Muehl, and W.~W. Cohen, ``Tweet2vec:
   \url{http://arxiv.org/abs/1605.03481}
 \BIBentrySTDinterwordspacing
 
+\bibitem{sklearn_newsdataset}
+``{Sklearn News Datasets},''
+  \url{https://scikit-learn.org/0.19/datasets/twenty_newsgroups.html}, 01.2019,
+  [Online; accessed 07-July-2019].
+
 \end{thebibliography}
