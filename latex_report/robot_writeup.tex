@@ -273,6 +273,7 @@ So really in summary of this lessons: I should just be more conscious about my o
 In this section I describe the code and structure of the github repository for reproducability as well as proof of my work. I will use: $base\_url =$ \textit{https://github.com/SimiPro/robotjudge/blob/master/} to shorten the urls. 
 
 \subsection{Data parsing , downloading}
+I downloaded the datasets as mentioned in the data section. The data is unpacked in \textit{base\_url/congress\_dataset}. The translator from tweet-id to csv is written in \textit{base\_url/trasnform\_id\_to\_tweet\_csv.ipynb}. For the news dataset there is equivalently the transformation code present but because the id dataset alone was already to big for github only the code and some meta data is there. 
 
 \subsection{LDA}
 \subsubsection{News Dataset and Standard Sklearn LDA}
@@ -281,6 +282,15 @@ After some failed attempts on twitter data I checked if sklearn's LDA works on t
 The final results and experiments for LDA with pyro are safed in \textit{baseurl/pyro\_lda\_final.ipynb}.
 
 \subsection{tweet2vec}
+For tweet2vec I created a new github repository to get a clean slate for this new model. The github url is: tweet2vec\_baseurl = \textit{https://github.com/SimiPro/tweet2vec\_lasagne}. The readme is still correct to get it running.
+\subsubsection{Data:}
+ The input datafiles indicate over their name how many tweets are in the dataset. E.g. \textit{tweet2vec\_baseurl/my\_training\_file\_10000.txt} is the training file that contains 90\% of 10000 tweets and \textit{tweet2vec\_baseurl/my\_testing\_file\_10000.txt} contains the other 10\% that make up the 10000 tweets. We have 3 datasets of size: 10000, 25000, 449334 number of tweets. 
+
+\subsubsection{Tagging speeches:}
+\textit{tweet2vec\_baseurl/tweet2vec/tweet2vec\_speeches.py} runs the embedding and tagging on each speech by using the best model which is safed in \textit{tweet2vec\_baseurl/tweet2vec/best\_model}. The specific tagged speeches were gathered in \textit{tweet2vec\_baseurl/results} by politician name and date of the speech so that analysis over time get possible.
+
+\subsection{Data Analysis}
+
 
 
 \bibliographystyle{IEEEtran}
