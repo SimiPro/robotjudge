@@ -1,0 +1,28 @@
+Description 
+This dataset contains the tweet ids of 2,041,399 tweets from the Twitter accounts of members of the 115th U.S. Congress. They were collected between January 27, 2017 and January 2, 2019 from the Twitter API using Social Feed Manager. Some tweets may come before this time period.
+
+These tweet ids are broken up into 2 collections. Each collection was collected either from the GET statuses/user_timeline method of the Twitter REST API (retrieved on a weekly schedule). The collections are:
+
+Senators: senators.txt
+Representatives: representatives.txt
+There is a README.txt file for each collection containing additional documentation on how it was collected. There is also an accounts.csv file for each collection collected from the GET statuses/user_timeline method listing the Twitter accounts that were collected.
+
+The GET statuses/lookup method supports retrieving the complete tweet for a tweet id (known as hydrating). Tools such as Twarc or Hydrator can be used to hydrate tweets.
+
+Per Twitter’s Developer Policy, tweet ids may be publicly shared for academic purposes; tweets may not.
+
+We intend to update this dataset periodically.
+
+Questions about this dataset can be sent to sfm@gwu.edu. George Washington University researchers should contact us for access to the tweets.
+
+(2019-02-07)
+Subject Social Sciences
+Keyword Twitter, government, Congress, Senate, House of Representatives
+
+
+representatives-1.txt (text/plain) 28955055 bytes.
+representatives-accounts-1.tab (text/tab-separated-values) 26708 bytes.
+representatives-README-1.txt (text/plain) 227751 bytes.
+senators-1.txt (text/plain) 9906162 bytes.
+senators-accounts-1.tab (text/tab-separated-values) 6159 bytes.
+senators-README-1.txt (text/plain) 59857 bytes.
