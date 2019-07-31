@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.3.16)  31 JUL 2019 11:37
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.3.16)  31 JUL 2019 20:35
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -352,11 +352,6 @@ e
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <14> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 25.
 
-Underfull \hbox (badness 10000) in paragraph at lines 40--41
-
- []
-
-
 Underfull \hbox (badness 10000) in paragraph at lines 41--42
 
  []
@@ -367,7 +362,17 @@ Underfull \hbox (badness 10000) in paragraph at lines 42--43
  []
 
 
+Underfull \hbox (badness 10000) in paragraph at lines 43--44
+
+ []
+
+
 Underfull \hbox (badness 10000) in paragraph at lines 44--45
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 46--47
 
  []
 
@@ -375,107 +380,104 @@ Underfull \hbox (badness 10000) in paragraph at lines 44--45
 
 
 ]
-LaTeX Font Info:    Try loading font information for U+msa on input line 73.
+LaTeX Font Info:    Try loading font information for U+msa on input line 75.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 73.
+LaTeX Font Info:    Try loading font information for U+msb on input line 75.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-Overfull \hbox (6.89095pt too wide) detected at line 79
+Overfull \hbox (6.89095pt too wide) detected at line 81
 []
  []
 
 <images/lda_plate.png, id=10, 378.41376pt x 186.6975pt>
 File: images/lda_plate.png Graphic file (type png)
 <use images/lda_plate.png>
-Package pdftex.def Info: images/lda_plate.png  used on input line 85.
+Package pdftex.def Info: images/lda_plate.png  used on input line 87.
 (pdftex.def)             Requested size: 170.73712pt x 84.23529pt.
 
-Overfull \hbox (6.89095pt too wide) detected at line 104
+Overfull \hbox (6.89095pt too wide) detected at line 106
 []
  []
 
 <images/extended_lda.png, id=11, 971.63pt x 915.42pt>
 File: images/extended_lda.png Graphic file (type png)
 <use images/extended_lda.png>
-Package pdftex.def Info: images/extended_lda.png  used on input line 109.
+Package pdftex.def Info: images/extended_lda.png  used on input line 111.
 (pdftex.def)             Requested size: 170.73712pt x 160.8574pt.
 [2 <./images/lda_plate.png> <./images/extended_lda.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 125--126
+Underfull \hbox (badness 10000) in paragraph at lines 127--128
 
  []
 
 <images/tweet2vec_embedding.png, id=28, 740.7675pt x 574.145pt>
 File: images/tweet2vec_embedding.png Graphic file (type png)
 <use images/tweet2vec_embedding.png>
-Package pdftex.def Info: images/tweet2vec_embedding.png  used on input line 131
+Package pdftex.def Info: images/tweet2vec_embedding.png  used on input line 133
 .
 (pdftex.def)             Requested size: 170.73712pt x 132.33092pt.
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 137.
+               Default added (so using `tbp') on input line 139.
 
 [3 <./images/tweet2vec_embedding.png>]
 <images/hirono_before_after_election.png, id=33, 702.625pt x 451.6875pt>
 File: images/hirono_before_after_election.png Graphic file (type png)
 <use images/hirono_before_after_election.png>
 Package pdftex.def Info: images/hirono_before_after_election.png  used on input
- line 209.
+ line 211.
 (pdftex.def)             Requested size: 170.73712pt x 109.75807pt.
 <images/senator_fischer_before_after_election.png, id=35, 702.625pt x 451.6875p
 t>
 File: images/senator_fischer_before_after_election.png Graphic file (type png)
 <use images/senator_fischer_before_after_election.png>
 Package pdftex.def Info: images/senator_fischer_before_after_election.png  used
- on input line 217.
+ on input line 219.
 (pdftex.def)             Requested size: 170.73712pt x 109.75807pt.
 <images/senator_cruz_top5_tweets_mid2017_2018.png, id=36, 702.625pt x 451.6875p
 t>
 File: images/senator_cruz_top5_tweets_mid2017_2018.png Graphic file (type png)
 <use images/senator_cruz_top5_tweets_mid2017_2018.png>
 Package pdftex.def Info: images/senator_cruz_top5_tweets_mid2017_2018.png  used
- on input line 223.
+ on input line 225.
 (pdftex.def)             Requested size: 170.73712pt x 109.75807pt.
 <images/tweets_of_sensanders_overtime.png, id=37, 702.625pt x 451.6875pt>
 File: images/tweets_of_sensanders_overtime.png Graphic file (type png)
 <use images/tweets_of_sensanders_overtime.png>
 Package pdftex.def Info: images/tweets_of_sensanders_overtime.png  used on inpu
-t line 230.
+t line 232.
 (pdftex.def)             Requested size: 170.73712pt x 109.75807pt.
 <images/tweets_of_senwarren_overtime.png, id=38, 702.625pt x 451.6875pt>
 File: images/tweets_of_senwarren_overtime.png Graphic file (type png)
 <use images/tweets_of_senwarren_overtime.png>
 Package pdftex.def Info: images/tweets_of_senwarren_overtime.png  used on input
- line 236.
+ line 238.
 (pdftex.def)             Requested size: 170.73712pt x 109.75807pt.
 <images/tweet2vec_training.png, id=39, 796.9775pt x 201.75375pt>
 File: images/tweet2vec_training.png Graphic file (type png)
 <use images/tweet2vec_training.png>
-Package pdftex.def Info: images/tweet2vec_training.png  used on input line 252.
+Package pdftex.def Info: images/tweet2vec_training.png  used on input line 245.
 
 (pdftex.def)             Requested size: 170.73712pt x 43.2192pt.
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [4 <./images/hirono_before_after_election.png> <./images/senator_fischer_befor
-e_after_election.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 265--285
+ [4]
+Underfull \hbox (badness 10000) in paragraph at lines 258--278
 
  []
 
-
-Underfull \hbox (badness 1603) in paragraph at lines 290--300
+[5 <./images/hirono_before_after_election.png> <./images/senator_fischer_before
+_after_election.png> <./images/senator_cruz_top5_tweets_mid2017_2018.png> <./im
+ages/tweets_of_sensanders_overtime.png> <./images/tweets_of_senwarren_overtime.
+png> <./images/tweet2vec_training.png>]
+Underfull \hbox (badness 1603) in paragraph at lines 283--293
 \OT1/ptm/m/n/10 'would', 'n ', 'forgery', 'cryp-tosys-tem', 'pro-vide',
  []
 
-[5 <./images/senator_cruz_top5_tweets_mid2017_2018.png> <./images/tweets_of_sen
-sanders_overtime.png> <./images/tweets_of_senwarren_overtime.png> <./images/twe
-et2vec_training.png>]
-Underfull \hbox (badness 2644) in paragraph at lines 303--313
+
+Underfull \hbox (badness 2644) in paragraph at lines 296--306
 \OT1/ptm/m/n/10 'could', 'peo-ple', 'some-one', 'fol-low-ing', 'would',
  []
 
@@ -483,122 +485,125 @@ Underfull \hbox (badness 2644) in paragraph at lines 303--313
 File: images/result_lda_on_twitter.png Graphic file (type png)
 <use images/result_lda_on_twitter.png>
 Package pdftex.def Info: images/result_lda_on_twitter.png  used on input line 3
-21.
+14.
 (pdftex.def)             Requested size: 170.73712pt x 144.18419pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 334--335
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 327--328
 
  []
 
-
-Underfull \hbox (badness 3078) in paragraph at lines 352--353
+[6 <./images/result_lda_on_twitter.png>]
+Underfull \hbox (badness 3078) in paragraph at lines 346--347
 []\OT1/ptm/m/n/10 In this sec-tion I de-scribe the code and struc-ture
  []
 
 
-Underfull \hbox (badness 3525) in paragraph at lines 352--353
+Underfull \hbox (badness 3525) in paragraph at lines 346--347
 \OT1/ptm/m/n/10 of the github repos-i-tory for re-pro-d-u-ca-bil-ity as well
  []
 
 
-Underfull \hbox (badness 6252) in paragraph at lines 352--353
+Underfull \hbox (badness 6252) in paragraph at lines 346--347
 \OT1/ptm/m/n/10 as proof of my work. I will use: $\OML/cmm/m/it/10 base[]url \O
 T1/cmr/m/n/10 =$
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 352--353
+Underfull \hbox (badness 10000) in paragraph at lines 346--347
 \OT1/ptm/m/it/10 https://github.com/SimiPro/robotjudge/blob/master/ \OT1/ptm/m/
 n/10 to
  []
 
 
-Underfull \hbox (badness 5802) in paragraph at lines 355--356
+Underfull \hbox (badness 5802) in paragraph at lines 349--350
 \OT1/ptm/m/n/10 The trans-la-tor from tweet-id to csv is writ-ten in
  []
 
 
-Underfull \hbox (badness 3108) in paragraph at lines 355--356
+Underfull \hbox (badness 3108) in paragraph at lines 349--350
 \OT1/ptm/m/it/10 base[]url/trasnform[]id[]to[]tweet[]csv.ipynb\OT1/ptm/m/n/10 .
  For the news
  []
 
-[6 <./images/result_lda_on_twitter.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 364--365
+
+Underfull \hbox (badness 10000) in paragraph at lines 358--359
 []\OT1/ptm/m/n/10 For tweet2vec I cre-ated a new github
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 364--365
+Underfull \hbox (badness 10000) in paragraph at lines 358--359
 \OT1/ptm/m/n/10 repos-i-tory to get a clean slate for this new
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 364--365
+Underfull \hbox (badness 10000) in paragraph at lines 358--359
 \OT1/ptm/m/n/10 model. The github url is: tweet2vec[]baseurl =
  []
 
 
-Underfull \hbox (badness 5548) in paragraph at lines 366--367
+Underfull \hbox (badness 5548) in paragraph at lines 360--361
  \OT1/ptm/m/it/10 1) Data:: [][] \OT1/ptm/m/n/10 The in-put datafiles in-di-cat
 e over their
  []
 
 
-Underfull \hbox (badness 7704) in paragraph at lines 366--367
+Underfull \hbox (badness 7704) in paragraph at lines 360--361
 \OT1/ptm/m/n/10 name how many tweets are in the dataset. E.g.
  []
 
 
-Underfull \hbox (badness 7379) in paragraph at lines 366--367
+Underfull \hbox (badness 7379) in paragraph at lines 360--361
 \OT1/ptm/m/n/10 ing file that con-tains 90% of 10000 tweets and
  []
 
 
-Underfull \hbox (badness 4819) in paragraph at lines 366--367
+Underfull \hbox (badness 4819) in paragraph at lines 360--361
 \OT1/ptm/m/it/10 tweet2vec[]baseurl/my[]testing[]file[]10000.txt \OT1/ptm/m/n/1
 0 con-tains the
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 369--370
+Underfull \hbox (badness 10000) in paragraph at lines 363--364
  \OT1/ptm/m/it/10 2) Tag-ging speeches:: [][]
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 369--370
+Underfull \hbox (badness 10000) in paragraph at lines 363--364
 \OT1/ptm/m/it/10 tweet2vec[]baseurl/tweet2vec/tweet2vec[]speeches.py
  []
 
 
-Underfull \hbox (badness 8151) in paragraph at lines 369--370
+Underfull \hbox (badness 8151) in paragraph at lines 363--364
 \OT1/ptm/m/n/10 runs the em-bed-ding and tag-ging on each speech
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 369--370
+Underfull \hbox (badness 10000) in paragraph at lines 363--364
 \OT1/ptm/m/n/10 by us-ing the best model which is safed in
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 369--370
+Underfull \hbox (badness 10000) in paragraph at lines 363--364
 \OT1/ptm/m/it/10 tweet2vec[]baseurl/tweet2vec/best[]model\OT1/ptm/m/n/10 . The 
 spe-cific
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 372--373
+Underfull \hbox (badness 10000) in paragraph at lines 366--367
 []\OT1/ptm/m/it/10 base[]url/analyze[]predicted[]tags.ipynb \OT1/ptm/m/n/10 cre
 -ates
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 372--373
+Underfull \hbox (badness 10000) in paragraph at lines 366--367
 \OT1/ptm/m/n/10 the plots based on the pre-dicted tags whereas
  []
 
 
-Underfull \hbox (badness 7379) in paragraph at lines 375--377
+Underfull \hbox (badness 7379) in paragraph at lines 369--371
 []\OT1/ptm/m/it/10 base[]url/statistics/count[]hashtags.ipynb \OT1/ptm/m/n/10 w
 as used to
  []
@@ -609,7 +614,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 25--28
  01.2019,
  []
 
-)
+[7])
 
 ** Conference Paper **
 Before submitting the final camera ready copy, remember to:
@@ -621,7 +626,9 @@ Before submitting the final camera ready copy, remember to:
  uses only Type 1 fonts and that every step in the generation
  process uses the appropriate paper size.
 
-[7] (./robot_writeup.aux) ) 
+[8
+
+] (./robot_writeup.aux) ) 
 Here is how much of TeX's memory you used:
  4320 strings out of 494923
  64130 string characters out of 6180742
@@ -630,28 +637,28 @@ Here is how much of TeX's memory you used:
  45999 words of font info for 96 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  41i,11n,35p,1850b,315s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/
-8r.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb
-></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr
-/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/
-texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive
-/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-
-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/share/texlive/texmf-dist/fo
-nts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/typ
-e1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/publi
-c/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfon
-ts/cm/cmr9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cm
-sy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pf
-b></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr
-/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/
-share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/t
-exmf-dist/fonts/type1/urw/times/utmbi8a.pfb></usr/share/texlive/texmf-dist/font
-s/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/tim
-es/utmri8a.pfb>
-Output written on robot_writeup.pdf (7 pages, 669166 bytes).
+{/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r
+.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb><
+/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/s
+hare/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/te
+xlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/t
+exmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-di
+st/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/share/texlive/texmf-dist/font
+s/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1
+/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/
+amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
+/cm/cmr9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy
+10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb>
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/s
+hare/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/sh
+are/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/tex
+mf-dist/fonts/type1/urw/times/utmbi8a.pfb></usr/share/texlive/texmf-dist/fonts/
+type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times
+/utmri8a.pfb>
+Output written on robot_writeup.pdf (8 pages, 682463 bytes).
 PDF statistics:
- 119 PDF objects out of 1000 (max. 8388607)
- 74 compressed objects within 1 object stream
+ 122 PDF objects out of 1000 (max. 8388607)
+ 76 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  51 words of extra memory for PDF output out of 10000 (max. 10000000)
 

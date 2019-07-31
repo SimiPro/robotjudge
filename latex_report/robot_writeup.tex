@@ -25,7 +25,8 @@
 \maketitle
 
 \begin{abstract}
-
+  This semester I took the course "Building a Robot Judge: Data Science For the Law" given by Professor Ash. The course was mainly concerend with giving us an overview over tools and best practices from Natural Language Processing (NLP) and how to apply them to social topics, mainly Law and Politics. As a final project we had to try to reuse the tools learned in the lecture and apply them to a new project. For me specifically I tried to reuse Topic-Models and Neural Networks and tried to apply them to Twitter data with the idea to figure out how politicians Twitter behavior changes through the course of specific events as for example when an election happens. This Write-Up is the result of this project. 
+  
 \end{abstract}
 
 \section{Introduction}
@@ -34,13 +35,14 @@ Topic models are one method to analyze such text and one of its main functions i
 	\item There is just not enough data that is already labeled. 
 	\item The target data set is very small or very specific. 
 \end{enumerate} 
-But there actually is already enough data labeled for a very wide range of topics on twitter. By interpreting hashtags as labeled data for topics we can expand the labeled data immediately. With 500 million tweets per day \cite{twitter_stats} and many of them tagged with different topics. From a sample of 1 million random twitter tweets 15.32\% had at least 1 tag. The idea then was simple, learn a topic model through hashtags and apply it to other domains. In this work we were interested in applying it to speeches of politicians. In particular we thought about the following ideas: How does the topics of a speech for a senator change if he is up for reelection ? How are the topics distributed for a democrat or for a republican senator ? Can we use hash tags to predict the party ? And lastly how do the topics compare between speech and twitter for a specific politician and to the general trendy topics ? \\
+But there actually is already enough data labeled for a very wide range of topics on twitter. By interpreting hashtags as labeled data for topics we can expand the labeled data immediately. With 500 million tweets per day \cite{twitter_stats} and many of them tagged with different topics. From a sample of 1 million random twitter tweets 15.32\% had at least 1 tag. The idea then was simple, learn a topic model through hashtags and apply it to other domains. In this work we were interested in applying it to speeches of politicians. In particular we thought about the following ideas: How does the topics of a speech for a senator change if he is up for reelection? How are the topics distributed for a democrat or for a republican senator? Can we use hash tags to predict the party? And lastly how do the topics compare between speech and twitter for a specific politician and to the general trendy topics? \\
 The paper continuous in the following manor: 
 \begin{enumerate}
 	\item In Section \ref{sec:Data} I describe the used datasets and how they were obtained. \\
 	\item In Section \ref{sec:Plan} I discuss the two models we used to predict the hash tags and why one failed. \\
 	\item In Section \ref{sec:Experiments} I describe the planned and executed experiments as well as their result.\\
-	\item In Section \ref{sec:Discussion} I discuss the results.
+	\item In Section \ref{sec:Discussion} I discuss the results.\\
+	
 	\item And finally In Section \ref{sec:Summary} I summarize and conclude the paper. \\
 	\item The Code Section \ref{sec:Code} is more of an isolated part that describes the Github repository and what is found where. 
 \end{enumerate}
@@ -56,9 +58,9 @@ Twitter has a rule that one is not allowed to save tweets along with text and ma
 \subsubsection{Congress Dataset}
 The 115th U.S. Congress Tweet Ids dataset contains 2,041,399 tweets. It covers a date distance from 2017-01-27 to 2019-01-02. It therefore covers 1 year before the senate elections and one year after the senate elections which makes it definitely very interesting for us. The metadata of the dataset specifies the date range but there were tweets in the dataset that were back as late as 2012. 
 \subsubsection{News Dataset}
-The News Outlet Tweet Ids downloaded is a fallback dataset which in case the congress dataset was to "fuzzy" could be used to train on more well written, structured and diverse topic distributed dataset. Which was of course just an hopeful assumption backed by the assumption that journalists were more careful when crafting tweets (e.g. by not using slang and slurs). 
+The News Outlet Tweet Ids downloaded is a fallback dataset which in case the congress dataset was to "fuzzy" could be used to train on more well written, structured and diverse topic distributed dataset. Which was of course just an hopeful assumption backed by the assumption that journalists were more careful when crafting tweets (e.g. by not using slang and slurs). I ended up not using this dataset. 
 \subsection{Speeches Data}
-The congressional records and therefore the speeches can all be publicly accessed on the congress page \cite{congress_page}. But this side makes it very hard to access specific information. So people developed software packages that parse this side for the information and presents it in an accessible format mostly json. I first tried a package from another student but due to quite a few bugs I had to switch to \cite{congress-downloader} which worked very nicely. I used it to parse all congress information from the years 2017 and 2018. 
+The congressional records and therefore the speeches can all be publicly accessed on the congress page \cite{congress_page}. But this side makes it very hard to access specific information. So people developed software packages that parse this side for the information and presents it in an accessible format mostly json. I first tried a package from another student but due to some bugs for my specific use case I had to switched to \cite{congress-downloader} which worked very nicely. I used it to parse all congress information from the years 2017 and 2018. 
 
 
 \section{Plan}
@@ -122,7 +124,7 @@ Then to maximize the ELBO in most software packages one calculates the gradient 
 Since I used pyro to implement this, in pyro $q_\lambda$ is described in the so called "guide" function and the joint distribution $p(\theta_m, w)$ is described in the so called "model". 
 
 \subsubsection{Markov Chain Monte Carlo}
-Markov Chain Monte Carlo (MCMC) algorithms are a bit more involved in theory and there are a lot more flavors then in variational inference. But the underlying idea is quite similar to VI. MCMC algorithms propose a markov chain from which they draw correlated samples when moving from state to state in this chain but which promises to converge to the correct distribution. Now one may ask why we do not use this all the time when it converges to the correct distribution ? Sadly such a chain has a so called "warm up" stage where we have to throw away samples up to the point where the distribution is burned it and we do not know how long this warm up phase is. Therefore normally one uses empirically defined rules and tests to estimate the length of the warm-up phase. A second problem is that complicated distributions get broken up into multiple conditional distributions and it can get slow to sample such distributions sequentially. \\
+Markov Chain Monte Carlo (MCMC) algorithms are a bit more involved in theory and there are a lot more flavors then in variational inference. But the underlying idea is quite similar to VI. MCMC algorithms propose a markov chain from which they draw correlated samples when moving from state to state in this chain but which promises to converge to the correct distribution. Now one may ask why we do not use this all the time when it converges to the correct distribution? Sadly such a chain has a so called "warm up" stage where we have to throw away samples up to the point where the distribution is burned it and we do not know how long this warm up phase is. Therefore normally one uses empirically defined rules and tests to estimate the length of the warm-up phase. A second problem is that complicated distributions get broken up into multiple conditional distributions and it can get slow to sample such distributions sequentially. \\
 
 \subsection{Tweet2vec - Recurrent Neural Network}
 After the extended LDA somewhat failed I read multiple papers and tested a multitude of other models. The one that finally worked was a neural network based solution: Tweet2Vec \cite{DhingraZFMC16}. The basic idea behind this model is that they view the character as smallest unit rather then the word as in LDA. This brings quite a few advantage. Most importantly misspelled words, slangs and slurs can be encoded with the same embedding meaning much easier. And we do not have to save all the words which due to the many abbreviations and slangs on twitter can blow up the vocabulary very much. In the congress dataset we have 11'498'020 number of different tokens. Furthermore they assume that a tweet has some latent representation/embedding and from this latent representation/embedding they predict the hashtag. To get a loss they use cross entropy loss based on predicted hashtag versus given hashtag. The neural network is mainly built out of Bi-directional Gated Recurrent Unit (Bi-GRU) which behave similarly as LSTM's (Long short-term memory) blocks. The size of the input is reasonable constraint on the number of characters a tweet can have - 145. The embedding part of the tweet2vec neural network can be seen in Figure \ref{fig:tweet2vecembedding}. The decoder part is just a dense layer with the number of neurons equal to the number of hashtags. The output of this dense layer is then used as input for the softmax function to get the probability of each hashtag. 
@@ -172,11 +174,11 @@ After the extended LDA somewhat failed I read multiple papers and tested a multi
 \section{Experiments \& Results}
 \label{sec:Experiments}
 First lets reiterate more concrete about what we want to figure out and then subsequently how we design the experiments to test our hypothesis. 
-We start with a simple one: Can we tag speeches of politicians with hashtags learned from twitter ? Then we go on to figure out how tags compare for someone giving a speech before and after campaigning for reelection. 
+We start with a simple one: Can we tag speeches of politicians with hashtags learned from twitter? Then we go on to figure out how tags compare for someone giving a speech before and after campaigning for reelection. 
 
-\subsection{Can we tag speeches of politicians with hashtags learned from twitter ? }
+\subsection{Can we tag speeches of politicians with hashtags learned from twitter? }
 \subsubsection{Data}
-The politician set consisted of 449334 tweets which we splitted randomly into 90\% training data and 10\% testing data. I counted all the hashtags and removed all that were not in the top 500 used hashtags (from 39671 total).  
+The politician set consisted of 449334 tweets which we splitted randomly into 90\% training data and 10\% testing data. I counted all the hashtags and removed all that were not in the top 500 used hashtags (from 39671 total). The 500 had no specific reason other then to simplify the prediction and that there are a lot of tags that are used very few times which makes it not relevant for my use case. 
 
 \subsubsection{Results}
 
@@ -201,7 +203,7 @@ From just checking the speeches vs the tags by hand it does not seem to be very 
 I really tried to also find a positive example but I just couldn't really find a satisfying one.
 
  
-\subsection{How does being before an election affect the tags a politican uses ? }
+\subsection{How does being before an election affect the tags a politican uses? }
 After wasting a lot of time on the tagging speeches part I concentrated the little rest of my time on only analyzing the raw twitter data. And one can say that for some senators definitely tweets differently and is affected when having an election. I picked a democratic senator and a republican senator to showcase how tweets change. Local topic get very important for senators and most tweets will get tagged with the state their from. In figure \ref{fig:hironobeforeafterelection} its the case for the 2012 election where Senator Hirono wants to get elected for Hawaii. In \ref{fig:senatorfischerbeforeafterelection} one can see the figure of number of tweets at a specific date from Senator Fisher of the republicans. Shortly before the election Nebraska specific tweets definitely spiked. But it is definitely not en if and only if indicator.  There are a lot of Senators who don't care about tweeting for local problems e.g. Senator Warren and Senator Sanders. See Figure \ref{fig:tweetsSanders} for the distribution of tags for Senator Sanders and \ref{fig:tweetsWarren} for the distribution of tags over time for Senator Warren. In both it is obvious that they have more global priorities then their own states. The plots for all the other Senators can be checked in my github repository see Section \ref{sec:Code}. But not only could it be that the tweet behaviour does not change but that a Senator could start tweeting about local events with no local election coming up. An example for this is Senator Cruz who had a hard election in Texas. But in the year of the election there was also a hurrican as strong as all 10 years and he tweeted a lot about that in that same time frame which is also the time of the election seen in Figure \ref{fig:senatorcruztop5tweetsmid20172018}.
  
 \begin{figure}
@@ -238,15 +240,6 @@ After wasting a lot of time on the tagging speeches part I concentrated the litt
 	\label{fig:tweetsWarren}
 \end{figure}
 
-
-
-\subsection{Hashtag analysis}
-
-
-\subsection{Tweet2vec}
-
-
-\subsection{Tweet2Vec}
 \begin{figure}
 	\centering
 	\includegraphics[width=0.7\linewidth]{images/tweet2vec_training}
@@ -331,7 +324,7 @@ And one can see that it has multiple tags from this 39671 that it really likes b
 
 \subsection{Data discussion}
 
-I was quite surprised about the very small amount of speeches politicians gave on the senate floor. I think I got surprised because the media implies through extensive coverage of politicians nearly every day that there happens actually much more then actually happens. \\
+I was quite surprised about the very small amount of speeches politicians gave on the senate floor. I think I got surprised because the media implies through extensive coverage of politicians nearly every day that there happens actually much more then actually happens. It makes more sense when considering that there are 100 Senators and only 148 legislative days on average per year over the last 10 years.  \\
 
 
 \subsection{Lessons learned}
@@ -346,6 +339,7 @@ So really in summary of this lessons: I should just be more conscious about my o
 
 \section{Summary}
 \label{sec:Summary}
+In this work I tried to learn multiple models on how to predict hashtags for tweets. When correctly learned to predict tags for tweets I tried to transfer the tagging to speeches of politicians and answer some questions about how their behavior changes when certain events occur e.g. being up for reelection. I described the conducted experiments and its results positive as well as negatives. A discussion of the results followed and lastly since this is a class project I tried to reflect on my methodology and what I can make better next time. 
 
 \section{Code}
 \label{sec:Code}
