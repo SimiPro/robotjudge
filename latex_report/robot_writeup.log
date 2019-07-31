@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.3.16)  31 JUL 2019 07:35
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.3.16)  31 JUL 2019 07:44
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -549,7 +549,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 307--308
  []
 
 
-Underfull \hbox (badness 7379) in paragraph at lines 310--311
+Underfull \hbox (badness 7379) in paragraph at lines 310--312
 []\OT1/ptm/m/it/10 base[]url/statistics/count[]hashtags.ipynb \OT1/ptm/m/n/10 w
 as used to
  []
@@ -599,7 +599,7 @@ share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/t
 exmf-dist/fonts/type1/urw/times/utmbi8a.pfb></usr/share/texlive/texmf-dist/font
 s/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/tim
 es/utmri8a.pfb>
-Output written on robot_writeup.pdf (6 pages, 560171 bytes).
+Output written on robot_writeup.pdf (6 pages, 560244 bytes).
 PDF statistics:
  112 PDF objects out of 1000 (max. 8388607)
  70 compressed objects within 1 object stream
