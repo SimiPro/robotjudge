@@ -34,7 +34,7 @@ Topic models are one method to analyse such text. It is designed to group docume
 	\item There is just not enough data that is already labeled. 
 	\item The target data set is very small or very specific. 
 \end{enumerate} 
-By interpreting hashtags as labeled data for topics we can expand the labeled data immediately. There is already enough data labeled for a very wide range of topics on twitter. With 500 million tweets per day \cite{twitter_stats} and many of them tagged with different topics. \todo{Figure out how many percent are tagged with a topic.}. The idea then was simple, learn a topic model \todo{explain topic models} through hashtags and apply it to other domains. In this work we were interested in applying it to speeches of politicians. In particular we thought about the following ideas: How does the topics of a speech for a senator change if he is up for reelection ? How are the topics distributed for a democrat or for a republican senator ? Can we use hash tags to predict the party ? And lastly how do the topics compare between speech and twitter for a specific politician and to the general trendy topics ? \\
+By interpreting hashtags as labeled data for topics we can expand the labeled data immediately. There is already enough data labeled for a very wide range of topics on twitter. With 500 million tweets per day \cite{twitter_stats} and many of them tagged with different topics. From a sample of 1 million random twitter tweets 15.32\% had at least 1 tag. The idea then was simple, learn a topic model through hashtags and apply it to other domains. In this work we were interested in applying it to speeches of politicians. In particular we thought about the following ideas: How does the topics of a speech for a senator change if he is up for reelection ? How are the topics distributed for a democrat or for a republican senator ? Can we use hash tags to predict the party ? And lastly how do the topics compare between speech and twitter for a specific politician and to the general trendy topics ? \\
 The paper continuous in the following manor: In Section \ref{sec:Data} I describe the used datasets. In Section \ref{sec:Plan} I discuss the two models we used to predict the hash tags and why one failed. Then in Section \ref{sec:Experiments} I describe the planned and executed experiments as well as their result. In Section \ref{sec:Discussion} I discuss the results and finally in Section \ref{sec:Summary} I summarize and conclude the paper. 
 
 - General Idea
@@ -107,7 +107,7 @@ Where $\alpha \in \R^K, \beta \in \R^{|V|}, \gamma \in \R^K$ are the parameters 
 
 \subsection{Training}
 Now the generative model is only the first step because we're not interested in generating words. We're interested in the so called posteriori distribution: Given words what are the topic-distribution of a document. Then from that generate hashtags by sampling a topic and sampling a hashtag for the document. This means that we have a so called inference problem and normally one applies bayes formula to get the topic distribution: \[ p(\theta_m | w) = \frac{p(w | \theta_m)p(\theta_m)}{p(w)} \] But the so called evidence term \[p(w) = \int_{\theta_m} p(w | \theta_m)p(\theta_m) d\theta_m^K \] is very hard to compute because every new possible topic increases computing time exponentially so this is nearly impossible to compute already for very little amount of topics. 
-Researchers have proposed different methods to approximate this posteriori distribution with other methods and there are a lot of software frameworks that automatically calculate the posterior distirbution. I decided to use pyro \cite{bingham2018pyro} which allows to describe the generative model in a very pytonian way and uses pyTorch \cite{paszke2017automatic} as backend for matrix and optimization calculations which makes it ideal for big datasets. \todo{rename https://github.com/SimiPro/robotjudge/blob/master/Untitled.ipynb and cite as pyro implementation}. The implementation can be seen in \todo{cite my pyro impl. }.   The optimization process is either via a monte carlo method (MCMC) or via Variational Inference (VI). Bot methods are explained in the next two subsections very briefly. 
+Researchers have proposed different methods to approximate this posteriori distribution with other methods and there are a lot of software frameworks that automatically calculate the posterior distirbution. I decided to use pyro \cite{bingham2018pyro} which allows to describe the generative model in a very pytonian way and uses pyTorch \cite{paszke2017automatic} as backend for matrix and optimization calculations which makes it ideal for big datasets. See the Code Section \ref{sec:Code} for an overview of what is implemented in which files.   The optimization process is either via a monte carlo method (MCMC) or via Variational Inference (VI). Bot methods are explained in the next two subsections very briefly. 
 
 \subsubsection{Variational Inference}
 The big idea in Variational Inference (VI) is to propose a proposal distribution $q_\lambda(\theta_m)$ which gets adapted via parameter $\lambda$ to be as close as possible to the real distribution we care about $p(\theta_m | w)$. Closeness is measured via kullback-leibler divergence but this can't be calculated directly most of the time so alternatively one maximizes the so called ELBO which minimizes the kullback-leibler divergence. 
@@ -203,7 +203,7 @@ I really tried to also find a positive example but I just couldn't really find a
 
  
 \subsection{How does being before an election affect the tags a politican uses ? }
-After wasting a lot of time on the tagging speeches part I concentrated the little rest of my time on only analyzing the raw twitter data. And one can say that for some senators definitely tweets differently and is affected when having an election. I picked a democratic senator and a republican senator to showcase how tweets change. Local topic get very important for senators and most tweets will get tagged with the state their from. In figure \ref{fig:hironobeforeafterelection} its the case for the 2012 election where Senator Hirono wants to get elected for Hawaii. In \ref{fig:senatorfischerbeforeafterelection} one can see the figure of number of tweets at a specific date from Senator Fisher of the republicans. Shortly before the election Nebraska specific tweets definitely spiked. But it is definitely not en if and only if indicator.  There are a lot of Senators who don't care about tweeting for local problems e.g. Senator Warren and Senator Sanders \todo{insert figures}. The plots for all the other Senators can be checked in my github repository. \todo{make a link to the github repo in the introduction}. But not only could it be that the tweet behaviour does not change but that a Senator could start tweeting about local events with no local election coming up. An example for this is Senator Cruz who had a hard election in Texas. But in the year of the election there was also a hurrican as strong as all 10 years and he tweeted a lot about that in that same time frame which is also the time of the election seen in Figure \ref{fig:senatorcruztop5tweetsmid20172018}.
+After wasting a lot of time on the tagging speeches part I concentrated the little rest of my time on only analyzing the raw twitter data. And one can say that for some senators definitely tweets differently and is affected when having an election. I picked a democratic senator and a republican senator to showcase how tweets change. Local topic get very important for senators and most tweets will get tagged with the state their from. In figure \ref{fig:hironobeforeafterelection} its the case for the 2012 election where Senator Hirono wants to get elected for Hawaii. In \ref{fig:senatorfischerbeforeafterelection} one can see the figure of number of tweets at a specific date from Senator Fisher of the republicans. Shortly before the election Nebraska specific tweets definitely spiked. But it is definitely not en if and only if indicator.  There are a lot of Senators who don't care about tweeting for local problems e.g. Senator Warren and Senator Sanders. See Figure \ref{fig:tweetsSanders} for the distribution of tags for Senator Sanders and \ref{fig:tweetsWarren} for the distribution of tags over time for Senator Warren. In both it is obvious that they have more global priorities then their own states. The plots for all the other Senators can be checked in my github repository see Section \ref{sec:Code}. But not only could it be that the tweet behaviour does not change but that a Senator could start tweeting about local events with no local election coming up. An example for this is Senator Cruz who had a hard election in Texas. But in the year of the election there was also a hurrican as strong as all 10 years and he tweeted a lot about that in that same time frame which is also the time of the election seen in Figure \ref{fig:senatorcruztop5tweetsmid20172018}.
  
 \begin{figure}
 	\centering
@@ -225,6 +225,20 @@ After wasting a lot of time on the tagging speeches part I concentrated the litt
 	\caption{Senator Cruz from Texas top 5 used tags tweets distribution from mid 2017 to end 2018.}
 	\label{fig:senatorcruztop5tweetsmid20172018}
 \end{figure}
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.7\linewidth]{images/tweets_of_sensanders_overtime}
+	\caption{Number of tweets of senator Sanders at a specific day.}
+	\label{fig:tweetsSanders}
+\end{figure}
+\begin{figure}
+	\centering
+	\includegraphics[width=0.7\linewidth]{images/tweets_of_senwarren_overtime}
+	\caption{Number of tweets of senator Warren at a specific day.}
+	\label{fig:tweetsWarren}
+\end{figure}
+
 
 
 \subsection{Hashtag analysis}
@@ -270,7 +284,7 @@ So really in summary of this lessons: I should just be more conscious about my o
 
 \section{Code}
 \label{sec:Code}
-In this section I describe the code and structure of the github repository for reproducability as well as proof of my work. I will use: $base\_url =$ \textit{https://github.com/SimiPro/robotjudge/blob/master/} to shorten the urls. 
+In this section I describe the code and structure of the github repository for reproducability as well as proof of my work. I will use: $base\_url =$ \textit{https://github.com/SimiPro/robotjudge/blob/master/} to shorten the urls. If you don't want to download the whole repository but only want to look at the jupyter notebook I can recommend the website \textit{https://nbviewer.jupyter.org/} where one can insert the link to the github notebook and it uses a much more powerful parser then github and especially can display a lot of plots that github can't.
 
 \subsection{Data parsing , downloading}
 I downloaded the datasets as mentioned in the data section. The data is unpacked in \textit{base\_url/congress\_dataset}. The translator from tweet-id to csv is written in \textit{base\_url/trasnform\_id\_to\_tweet\_csv.ipynb}. For the news dataset there is equivalently the transformation code present but because the id dataset alone was already to big for github only the code and some meta data is there. 
@@ -289,7 +303,12 @@ For tweet2vec I created a new github repository to get a clean slate for this ne
 \subsubsection{Tagging speeches:}
 \textit{tweet2vec\_baseurl/tweet2vec/tweet2vec\_speeches.py} runs the embedding and tagging on each speech by using the best model which is safed in \textit{tweet2vec\_baseurl/tweet2vec/best\_model}. The specific tagged speeches were gathered in \textit{tweet2vec\_baseurl/results} by politician name and date of the speech so that analysis over time get possible.
 
-\subsection{Data Analysis}
+\subsection{Data Analysis / Plots}
+ \textit{base\_url/analyze\_predicted\_tags.ipynb} creates the plots based on the predicted tags whereas  \textit{base\_url/TimeLineHashTags.ipynb} creates the plots based on real tags. 
+ 
+\subsection{Statistics}
+\textit{base\_url/statistics/count\_hashtags.ipynb} was used to count the number of hashtags in a random sample of over 1 mio tweets. 
+
 
 
 
