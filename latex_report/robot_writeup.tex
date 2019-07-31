@@ -30,16 +30,22 @@
 
 \section{Introduction}
 Automatic analysis of text written or said by politicians is useful in many ways. And they come in many forms - spoken on the senator floor, tweeted on twitter and printed in papers. 
-Topic models are one method to analyse such text. It is designed to group documents with similar content. A lot of this techniques are unsupervised for multiple reasons: \begin{enumerate}
+Topic models are one method to analyze such text and one of its main functions is to group documents with similar content. A lot of this techniques are unsupervised for multiple reasons: \begin{enumerate}
 	\item There is just not enough data that is already labeled. 
 	\item The target data set is very small or very specific. 
 \end{enumerate} 
-By interpreting hashtags as labeled data for topics we can expand the labeled data immediately. There is already enough data labeled for a very wide range of topics on twitter. With 500 million tweets per day \cite{twitter_stats} and many of them tagged with different topics. From a sample of 1 million random twitter tweets 15.32\% had at least 1 tag. The idea then was simple, learn a topic model through hashtags and apply it to other domains. In this work we were interested in applying it to speeches of politicians. In particular we thought about the following ideas: How does the topics of a speech for a senator change if he is up for reelection ? How are the topics distributed for a democrat or for a republican senator ? Can we use hash tags to predict the party ? And lastly how do the topics compare between speech and twitter for a specific politician and to the general trendy topics ? \\
-The paper continuous in the following manor: In Section \ref{sec:Data} I describe the used datasets. In Section \ref{sec:Plan} I discuss the two models we used to predict the hash tags and why one failed. Then in Section \ref{sec:Experiments} I describe the planned and executed experiments as well as their result. In Section \ref{sec:Discussion} I discuss the results and finally in Section \ref{sec:Summary} I summarize and conclude the paper. 
+But there actually is already enough data labeled for a very wide range of topics on twitter. By interpreting hashtags as labeled data for topics we can expand the labeled data immediately. With 500 million tweets per day \cite{twitter_stats} and many of them tagged with different topics. From a sample of 1 million random twitter tweets 15.32\% had at least 1 tag. The idea then was simple, learn a topic model through hashtags and apply it to other domains. In this work we were interested in applying it to speeches of politicians. In particular we thought about the following ideas: How does the topics of a speech for a senator change if he is up for reelection ? How are the topics distributed for a democrat or for a republican senator ? Can we use hash tags to predict the party ? And lastly how do the topics compare between speech and twitter for a specific politician and to the general trendy topics ? \\
+The paper continuous in the following manor: 
+\begin{enumerate}
+	\item In Section \ref{sec:Data} I describe the used datasets and how they were obtained. \\
+	\item In Section \ref{sec:Plan} I discuss the two models we used to predict the hash tags and why one failed. \\
+	\item In Section \ref{sec:Experiments} I describe the planned and executed experiments as well as their result.\\
+	\item In Section \ref{sec:Discussion} I discuss the results.
+	\item And finally In Section \ref{sec:Summary} I summarize and conclude the paper. \\
+	\item The Code Section \ref{sec:Code} is more of an isolated part that describes the Github repository and what is found where. 
+\end{enumerate}
 
-- General Idea
-- Hypothesis 
-- Paper Structure
+
 
 
 \section{Data}
@@ -48,19 +54,19 @@ In this section we present the used datasets, how they were obtained and the ove
 \subsection{Twitter Data}
 Twitter has a rule that one is not allowed to save tweets along with text and make it then publicly available as a dataset. This is because if one wants to make any changes to the tweets e.g. delete them etc. this is no longer globally possible if they are saved somewhere else online. So one is only allowed to save them via an unique ID that can be used to retrieve the tweets with the twitter api. A website that makes many important datasets available in this manner is found in  \cite{twitter_datasets}. I downloaded two datasets.
 \subsubsection{Congress Dataset}
-The 115th U.S. Congress Tweet Ids dataset contains 2,041,399 tweets. It covers a date distance from 2017-01-27 to 2019-01-02. It therefore covers 1 year before the senate elections and one year after the senate elections which makes it definitely very interesting for us. 
+The 115th U.S. Congress Tweet Ids dataset contains 2,041,399 tweets. It covers a date distance from 2017-01-27 to 2019-01-02. It therefore covers 1 year before the senate elections and one year after the senate elections which makes it definitely very interesting for us. The metadata of the dataset specifies the date range but there were tweets in the dataset that were back as late as 2012. 
 \subsubsection{News Dataset}
-The News Outlet Tweet Ids we also downloaded was a fallback dataset which in case the congress dataset was to "fuzzy" could be used to train on more well written, structured and diverse topic distributed dataset. Which was of course just an hopeful assumption. 
+The News Outlet Tweet Ids downloaded is a fallback dataset which in case the congress dataset was to "fuzzy" could be used to train on more well written, structured and diverse topic distributed dataset. Which was of course just an hopeful assumption backed by the assumption that journalists were more careful when crafting tweets (e.g. by not using slang and slurs). 
 \subsection{Speeches Data}
 The congressional records and therefore the speeches can all be publicly accessed on the congress page \cite{congress_page}. But this side makes it very hard to access specific information. So people developed software packages that parse this side for the information and presents it in an accessible format mostly json. I first tried a package from another student but due to quite a few bugs I had to switch to \cite{congress-downloader} which worked very nicely. I used it to parse all congress information from the years 2017 and 2018. 
 
 
 \section{Plan}
 \label{sec:Plan}
-In the first part of this section I will tell about the failure and massive time loss that resulted in trying to adapt LDA to be used with the twitter data and in the second part a summary of the neural network based method that finally worked for predicting hash tags. 
+In the first part of this Section I will tell about LDA and about how I planed to adapt LDA so it is able to predict hashtags. In the second part I give a summary of the neural network based method that finally worked for predicting hash tags. 
 \subsection{Latent Dirichlet Allocation (LDA)}
 \subsubsection{Standard LDA}
-LDA was one of the algorithms for topic models that got presented in class. The generative model to generate a word makes it very simple to think about LDA. Given a document sample a topic and for this topic sample a word. And the word is the thing we observe and we can use to learn the corresponding distributions. \\
+LDA was one of the algorithms for topic models that got presented in class. The generative model to generate a word makes it very simple to think about LDA. Given a document sample a topic and for this topic sample a word. And the word is the thing we observe and can be used to learn the corresponding distributions. \\
 \textbf{More formally} the process depicted in Figure \ref{fig:ldaplate} is defined as: 
 
 \small
@@ -83,7 +89,7 @@ Where $\alpha \in \R^K, \beta \in \R^{|V|}$ are the parameters for the dirichlet
 
 
 \subsubsection{Extended LDA}
-So naturally I thought it should be simple to extend LDA so that it can also predict hash tags in the following way. For some document and its document-topic distribution I sample 2 topics and then for the topic-word distribution I sample a word and additionally to the topic-word distribution I just have an topic-hashtag distribution of which I sample a hashtag. And the we can learn the correct distributions since we observe both word and hashtag. \textbf{More formally} we have only 3 additions (inserted in blue) to the process as defined in normal lda: 
+So naturally I thought it should be simple to extend LDA so that it can also predict hash tags in the following way. For some document and its document-topic distribution I sample two topics and then for the topic-word distribution I sample a word and additionally to the topic-word distribution I just have an topic-hashtag distribution from which I sample a hashtag. And the we can learn the correct distributions since we observe both word and hashtag. \textbf{More formally} we have only 3 additions (inserted in blue) to the process as defined in normal lda: 
 
 \small
 \begin{align*}
@@ -107,7 +113,7 @@ Where $\alpha \in \R^K, \beta \in \R^{|V|}, \gamma \in \R^K$ are the parameters 
 
 \subsection{Training}
 Now the generative model is only the first step because we're not interested in generating words. We're interested in the so called posteriori distribution: Given words what are the topic-distribution of a document. Then from that generate hashtags by sampling a topic and sampling a hashtag for the document. This means that we have a so called inference problem and normally one applies bayes formula to get the topic distribution: \[ p(\theta_m | w) = \frac{p(w | \theta_m)p(\theta_m)}{p(w)} \] But the so called evidence term \[p(w) = \int_{\theta_m} p(w | \theta_m)p(\theta_m) d\theta_m^K \] is very hard to compute because every new possible topic increases computing time exponentially so this is nearly impossible to compute already for very little amount of topics. 
-Researchers have proposed different methods to approximate this posteriori distribution with other methods and there are a lot of software frameworks that automatically calculate the posterior distirbution. I decided to use pyro \cite{bingham2018pyro} which allows to describe the generative model in a very pytonian way and uses pyTorch \cite{paszke2017automatic} as backend for matrix and optimization calculations which makes it ideal for big datasets. See the Code Section \ref{sec:Code} for an overview of what is implemented in which files.   The optimization process is either via a monte carlo method (MCMC) or via Variational Inference (VI). Bot methods are explained in the next two subsections very briefly. 
+Researchers have proposed different methods to approximate this posteriori distribution with other methods and there are a lot of software frameworks that automatically calculate the posterior distirbution. I decided to use pyro \cite{bingham2018pyro} which allows to describe the generative model in a very pytonian way and uses pyTorch \cite{paszke2017automatic} as backend for matrix and optimization calculations which should make it ideal for big datasets. See the Code Section \ref{sec:Code} for an overview of what is implemented in which files.   The optimization process is either via a monte carlo method (MCMC) or via Variational Inference (VI). Bot methods are explained in the next two subsections very briefly. 
 
 \subsubsection{Variational Inference}
 The big idea in Variational Inference (VI) is to propose a proposal distribution $q_\lambda(\theta_m)$ which gets adapted via parameter $\lambda$ to be as close as possible to the real distribution we care about $p(\theta_m | w)$. Closeness is measured via kullback-leibler divergence but this can't be calculated directly most of the time so alternatively one maximizes the so called ELBO which minimizes the kullback-leibler divergence. 
@@ -116,21 +122,14 @@ Then to maximize the ELBO in most software packages one calculates the gradient 
 Since I used pyro to implement this, in pyro $q_\lambda$ is described in the so called "guide" function and the joint distribution $p(\theta_m, w)$ is described in the so called "model". 
 
 \subsubsection{Markov Chain Monte Carlo}
-Markov Chain Monte Carlo (MCMC) algorithms are a bit more involved in theory and there are a lot more flavors then in variational inference. But the underlying idea is the same for them aswell. MCMC algorithms propose a markov chain from which they draw correlated samples when moving from state to state in this chain but which promises to converge to the correct distribution. Now one may ask why we do not use this all the time when it converges to the correct distribution ? Sadly such a chain has a so called "warm up" stage where we have to throw away samples up to the point where the distribution is burned it and we do not know how long this warm up phase is. Therefore normally one uses empirically defined rules and tests to estimate the length of the warm-up phase. A second problem is that complicated distributions get broken up into multiple conditional distributions and it can get slow to sample such distributions sequentially. \\
-
-
-
-\subsubsection{Training Result}
-
-But it just didn't work. I tried a multitude of different proposal distributions and even neural networks. It just didn't really converge nicely. I initially thought that the problem was my extension on top of LDA. But it didn't work for LDA aswell. 
-
+Markov Chain Monte Carlo (MCMC) algorithms are a bit more involved in theory and there are a lot more flavors then in variational inference. But the underlying idea is quite similar to VI. MCMC algorithms propose a markov chain from which they draw correlated samples when moving from state to state in this chain but which promises to converge to the correct distribution. Now one may ask why we do not use this all the time when it converges to the correct distribution ? Sadly such a chain has a so called "warm up" stage where we have to throw away samples up to the point where the distribution is burned it and we do not know how long this warm up phase is. Therefore normally one uses empirically defined rules and tests to estimate the length of the warm-up phase. A second problem is that complicated distributions get broken up into multiple conditional distributions and it can get slow to sample such distributions sequentially. \\
 
 \subsection{Tweet2vec - Recurrent Neural Network}
-After the extended LDA somewhat failed I read multiple papers and tested a multitude of other models. The one that finally worked was a neural network based solution: Tweet2Vec \cite{DhingraZFMC16}. The basic idea behind this model is that they view the character as smallest unit rather then the word as in LDA. This brings quite a few advantage. Most importantly misspelled words, slangs and slurs can be encoded with the same embedding meaning much easier. And we do not have to save all the words which due to the many abbreviations and slangs on twitter can blow up the vocabulary very much. In the congress dataset we have 11'498'020 number of different tokens. Furthermore they assume that a tweet has some latent representation and from this latent representation they predict the hashtag. To get a loss they use cross entropy loss based on predicted hashtag versus given hashtag. The neural network is mainly built out of Bi-directional Gated Recurrent Unit (Bi-GRU) which behave similarly as LSTM's (Long short-term memory) blocks. The size of the input is reasonable constraint on the number of characters a tweet can have - 145. The embedding part of the tweet2vec neural network can be seen in Figure \ref{fig:tweet2vecembedding}. The decoder part is just a dense layer with the number of neurons equal to the number of hashtags. The output of this dense layer is then used as input for the softmax function to get the probability of each hashtag. 
+After the extended LDA somewhat failed I read multiple papers and tested a multitude of other models. The one that finally worked was a neural network based solution: Tweet2Vec \cite{DhingraZFMC16}. The basic idea behind this model is that they view the character as smallest unit rather then the word as in LDA. This brings quite a few advantage. Most importantly misspelled words, slangs and slurs can be encoded with the same embedding meaning much easier. And we do not have to save all the words which due to the many abbreviations and slangs on twitter can blow up the vocabulary very much. In the congress dataset we have 11'498'020 number of different tokens. Furthermore they assume that a tweet has some latent representation/embedding and from this latent representation/embedding they predict the hashtag. To get a loss they use cross entropy loss based on predicted hashtag versus given hashtag. The neural network is mainly built out of Bi-directional Gated Recurrent Unit (Bi-GRU) which behave similarly as LSTM's (Long short-term memory) blocks. The size of the input is reasonable constraint on the number of characters a tweet can have - 145. The embedding part of the tweet2vec neural network can be seen in Figure \ref{fig:tweet2vecembedding}. The decoder part is just a dense layer with the number of neurons equal to the number of hashtags. The output of this dense layer is then used as input for the softmax function to get the probability of each hashtag. 
 \begin{figure}
 	\centering
 	\includegraphics[width=0.7\linewidth]{images/tweet2vec_embedding}
-	\caption{Tweet2vec embedding part of the neural network.}
+	\caption{Tweet2vec embedding part of the neural network. The source is the original paper \cite{DhingraZFMC16}}.
 	\label{fig:tweet2vecembedding}
 \end{figure}
 
@@ -165,7 +164,7 @@ After the extended LDA somewhat failed I read multiple papers and tested a multi
 		Cruz       & R &      2         \\
 		King       & I &     3          \\ \bottomrule
 	\end{tabular}
-	\caption{List of senators up for reelection in 2018. (D = Democrat, R = Republican, I = Independent)}
+	\caption{List of senators up for reelection in 2018. (D = Democrat, R = Republican, I = Independent).}
 	\label{tbl:senators}
 \end{table}
 
@@ -182,7 +181,7 @@ The politician set consisted of 449334 tweets which we splitted randomly into 90
 \subsubsection{Results}
 
 As explained in previous sections I used tweet2vec.  In Figure \ref{fig:tweet2vectraining} one can see that we got nearly 25\% recall for tag number 1 which is quite good considering how difficult the task is (Randomly predicting one of the top 500 would result in 0.2\% recall). For the speeches I was only interested in the senators up for re-election. It is a set of 24 senators listed in Table \ref{tbl:senators} with their corresponding party and the number of speeches they gave in the years 2017 and 2018. \\
-Sadly this dataset of speeches is very small. But it does not hinder us to tag the available speeches. To tweet2vec to be able to work on the speeches I had to cut it up into pieces of 145 and additionally I did some preprocessing like stemming, removing stop words and removing line breaks just to get a bit shorter speeches and get more content into those 145 characters. 
+Sadly and for me quite unexpected this dataset of speeches is very small.  But it does not hinder us to tag the available speeches. To tweet2vec to be able to work on the speeches I had to cut it up into pieces of 145 and additionally I did some preprocessing like stemming, removing stop words and removing line breaks just to get a bit shorter speeches and get more content into those 145 characters. 
 
 In the boxes one can see the input for the trained tweet2vec in the top part and the tags tweet2vec predicted in the bottom part. 
 
@@ -257,17 +256,83 @@ After wasting a lot of time on the tagging speeches part I concentrated the litt
 
 \section{Negative Results}
 
+LDA with Pyro just didn't work. I tried a multitude of different proposal distributions and even neural networks. It just didn't really converge nicely. I initially thought that the problem was my extension on top of LDA. But it didn't work for LDA aswell. So that comparison is simpler I directly make boxes in the text that shows the result without having an extra Figure with the results in it. 
+
+\subsection{Sklearn News Dataset}
+
+Since in the lecture we learned about sklearn I thought to test the LDA implementation first with the LDA implementation from Sklearn and since Sklearn uses a provided News dataset in its examples I reused that to test my LDA pyro implementation. But first the topics I obtained with normal \textbf{LDA-Sklearn}: 
+\begin{framed}
+	Topic 0:\\
+	law jesus christ god faith\\
+	Topic 1:\\
+	course training applications esa data\\
+	Topic 2:\\
+	card drive game remove board\\
+	Topic 3:\\
+	good federal new coach defense\\
+	Topic 4:\\
+	team players edu nhl teams\\
+	Topic 5:\\
+	israeli human jews israel rights\\
+	Topic 6:\\
+	cx c\_ ah ck 34u\\
+	Topic 7:\\
+	weapon models mouse copy ibm\\
+	Topic 8:\\
+	don just use like time\\
+	Topic 9:\\
+	gun right guns president new\\
+\end{framed}
+It definitely finds some words that belong to the same topic.\\
+Then next \textbf{my Pyro-LDA} implementation:
+
+\begin{framed}
+	---- topic 0 ----- \\ 
+	'would', 'attack', 'n        ', 'think', 'input', 'right', 'plaintext', 'cards'\\
+	---- topic 1 -----\\
+	'would', 'n    ', 'forgery', 'cryptosystem', 'provide', 'thing', 'think', 'system', 'seem', 'suppose'\\
+	---- topic 2 -----\\
+	'would', 'people', 'think', 'month', 'windows', 'support', 'information', 'right', 'advice', 'attack'\\
+	---- topic 3 -----\\
+	'would', 'right', 'n        ', 'technology', 'people', 'could', 'point', 'attack', 'wretched', 'computer'\\
+	---- topic 4 -----\\
+	'would', 'program', 'reward', 'case', 'right', 'windows'
+\end{framed}
+ And one can see that it defintly finds some words that belong together but it seems that it can't really find a hard border between the topics. Then I googled a bit about what may be could be wrong with my model and I stumbled upon an implementation provided by Pyro itself. This implementation uses a neural network as a proposal distribution for the topics. So that the neural network could find some non linear mapping between the input words to the specific topic. So I tested this as well \textbf{Pyro-LDA}:
+ \begin{framed}
+ 	---- topic 0 -----\\
+ 	'anyone', 'would', 'post', 'looking', 'system', 'first', 'please', 'hello', 'article', 'several'\\
+ 	---- topic 1 -----\\
+ 	'think', 'people', 'anyone', 'could', 'would', 'please', 'interest', 'looking', 'believe', 'point'\\
+ 	---- topic 2 -----\\
+ 	'would', 'people', 'could', 'anyone', 'think', 'please', 'someone', 'try', 'believe', 'thought'\\
+ 	---- topic 3 -----\\
+ 	'could', 'people', 'someone', 'following', 'would', 'windows', 'try', 'drive', 'really', 'right'\\
+ 	---- topic 4 -----\\
+ 	'think', 'would', 'people', 'could', 'someone', 'anyone', 'question', 'drive', 'article', 'believe'
+ 	\end{framed} 
+And it seems to have a very similar problem to my own implementation as to be able to split the result into multiple topics and not return randomly one of the top K used words.
+
+\subsection{Results on Twitter Data}
+So naturally when one is very convinced that the model should actually work and its probably the data's fault I tried my extended versions of LDA on the twitter data anyway. And sadly it failed as well. 
+\textbf{Extended Pyro - LDA - implementation Figure \ref{fig:resultldaontwitter}:}
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.7\linewidth]{images/result_lda_on_twitter}
+	\caption{Results of predicting topics and hashtags together. Source: pyro\_lda\_final.ipynb}
+	\label{fig:resultldaontwitter}
+\end{figure}
+And one can see that it has multiple tags from this 39671 that it really likes but it just can't get it to split between the topics. 
+
+
 
 \section{Discussion}
 \label{sec:Discussion}
 
 \subsection{Data discussion}
 
-\todo{- just very few speeches data. }
-\todo{especially discuss twitter data again. }
+I was quite surprised about the very small amount of speeches politicians gave on the senate floor. I think I got surprised because the media implies through extensive coverage of politicians nearly every day that there happens actually much more then actually happens. \\
 
-\subsection{Model discussion}
-\todo{Neural network vs Other tools}
 
 \subsection{Lessons learned}
 I want to write down a few words about the lessons I've learned and reflect a bit so that I may have learned something beside the technical. 
