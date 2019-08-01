@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.3.16)  1 AUG 2019 07:33
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.3.16)  1 AUG 2019 10:48
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -496,114 +496,130 @@ Underfull \hbox (badness 10000) in paragraph at lines 328--329
  []
 
 [6 <./images/result_lda_on_twitter.png>]
-Underfull \hbox (badness 3078) in paragraph at lines 347--348
+Underfull \hbox (badness 3078) in paragraph at lines 352--353
 []\OT1/ptm/m/n/10 In this sec-tion I de-scribe the code and struc-ture
  []
 
 
-Underfull \hbox (badness 3525) in paragraph at lines 347--348
+Underfull \hbox (badness 3525) in paragraph at lines 352--353
 \OT1/ptm/m/n/10 of the github repos-i-tory for re-pro-d-u-ca-bil-ity as well
  []
 
 
-Underfull \hbox (badness 6252) in paragraph at lines 347--348
+Underfull \hbox (badness 6252) in paragraph at lines 352--353
 \OT1/ptm/m/n/10 as proof of my work. I will use: $\OML/cmm/m/it/10 base[]url \O
 T1/cmr/m/n/10 =$
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 347--348
+Underfull \hbox (badness 10000) in paragraph at lines 352--353
 \OT1/ptm/m/it/10 https://github.com/SimiPro/robotjudge/blob/master/ \OT1/ptm/m/
 n/10 to
  []
 
 
-Underfull \hbox (badness 5802) in paragraph at lines 350--351
+Underfull \hbox (badness 5802) in paragraph at lines 355--356
 \OT1/ptm/m/n/10 The trans-la-tor from tweet-id to csv is writ-ten in
  []
 
 
-Underfull \hbox (badness 3108) in paragraph at lines 350--351
+Underfull \hbox (badness 3108) in paragraph at lines 355--356
 \OT1/ptm/m/it/10 base[]url/trasnform[]id[]to[]tweet[]csv.ipynb\OT1/ptm/m/n/10 .
  For the news
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 359--360
+Underfull \hbox (badness 10000) in paragraph at lines 364--365
 []\OT1/ptm/m/n/10 For tweet2vec I cre-ated a new github
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 359--360
+Underfull \hbox (badness 10000) in paragraph at lines 364--365
 \OT1/ptm/m/n/10 repos-i-tory to get a clean slate for this new
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 359--360
+Underfull \hbox (badness 10000) in paragraph at lines 364--365
 \OT1/ptm/m/n/10 model. The github url is: tweet2vec[]baseurl =
  []
 
 
-Underfull \hbox (badness 5548) in paragraph at lines 361--362
- \OT1/ptm/m/it/10 1) Data:: [][] \OT1/ptm/m/n/10 The in-put datafiles in-di-cat
+Underfull \hbox (badness 3449) in paragraph at lines 366--369
+ \OT1/ptm/m/it/10 1) Data: [][] \OT1/ptm/m/n/10 The in-put data files in-di-cat
 e over their
  []
 
 
-Underfull \hbox (badness 7704) in paragraph at lines 361--362
+Underfull \hbox (badness 7704) in paragraph at lines 366--369
 \OT1/ptm/m/n/10 name how many tweets are in the dataset. E.g.
  []
 
 
-Underfull \hbox (badness 7379) in paragraph at lines 361--362
-\OT1/ptm/m/n/10 ing file that con-tains 90% of 10000 tweets and
+Underfull \hbox (badness 10000) in paragraph at lines 366--369
+\OT1/ptm/m/it/10 tweet2vec[]baseurl/my[]training[]file[]10000.txt \OT1/ptm/m/n/
+10 is the
  []
 
 
-Underfull \hbox (badness 4819) in paragraph at lines 361--362
+Underfull \hbox (badness 1902) in paragraph at lines 366--369
+\OT1/ptm/m/n/10 train-ing file that con-tains 90% of 10000 tweets and
+ []
+
+
+Underfull \hbox (badness 4819) in paragraph at lines 366--369
 \OT1/ptm/m/it/10 tweet2vec[]baseurl/my[]testing[]file[]10000.txt \OT1/ptm/m/n/1
 0 con-tains the
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 364--365
+Underfull \hbox (badness 10000) in paragraph at lines 366--369
+\OT1/ptm/m/n/10 Putting the speeches into the right for-mat so
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 366--369
+\OT1/ptm/m/n/10 that they can be parsed by tweet2vec does:
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 371--372
  \OT1/ptm/m/it/10 2) Tag-ging speeches:: [][]
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 364--365
+Underfull \hbox (badness 10000) in paragraph at lines 371--372
 \OT1/ptm/m/it/10 tweet2vec[]baseurl/tweet2vec/tweet2vec[]speeches.py
  []
 
 
-Underfull \hbox (badness 8151) in paragraph at lines 364--365
+Underfull \hbox (badness 8151) in paragraph at lines 371--372
 \OT1/ptm/m/n/10 runs the em-bed-ding and tag-ging on each speech
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 364--365
+Underfull \hbox (badness 10000) in paragraph at lines 371--372
 \OT1/ptm/m/n/10 by us-ing the best model which is safed in
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 364--365
+Underfull \hbox (badness 10000) in paragraph at lines 371--372
 \OT1/ptm/m/it/10 tweet2vec[]baseurl/tweet2vec/best[]model\OT1/ptm/m/n/10 . The 
 spe-cific
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 367--368
+Underfull \hbox (badness 10000) in paragraph at lines 374--375
 []\OT1/ptm/m/it/10 base[]url/analyze[]predicted[]tags.ipynb \OT1/ptm/m/n/10 cre
 -ates
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 367--368
+Underfull \hbox (badness 10000) in paragraph at lines 374--375
 \OT1/ptm/m/n/10 the plots based on the pre-dicted tags whereas
  []
 
 
-Underfull \hbox (badness 7379) in paragraph at lines 370--372
+Underfull \hbox (badness 7379) in paragraph at lines 377--379
 []\OT1/ptm/m/it/10 base[]url/statistics/count[]hashtags.ipynb \OT1/ptm/m/n/10 w
 as used to
  []
@@ -655,7 +671,7 @@ are/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/tex
 mf-dist/fonts/type1/urw/times/utmbi8a.pfb></usr/share/texlive/texmf-dist/fonts/
 type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times
 /utmri8a.pfb>
-Output written on robot_writeup.pdf (8 pages, 682472 bytes).
+Output written on robot_writeup.pdf (8 pages, 683454 bytes).
 PDF statistics:
  122 PDF objects out of 1000 (max. 8388607)
  76 compressed objects within 1 object stream

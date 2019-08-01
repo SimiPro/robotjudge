@@ -35,16 +35,16 @@ Topic models are one method to analyze such text and one of its main functions i
 	\item There is not enough data that is already labeled. 
 	\item The target data set is very small or very specific. 
 \end{enumerate} 
-But there actually is already enough data labeled for a very wide range of topics on Twitter. By interpreting hashtags as labeled data for topics we can expand the labeled data immediately. With 500 million tweets per day \cite{twitter_stats} and many of them tagged with different topics. From a sample of 1 million random tweets 15.32\% had at least 1 tag. The idea then was simple, learn a topic model through hashtags and transfer the learned model to other domains. In this work we were interested in applying it to speeches of politicians. In particular we thought about the following ideas: How does the topics of a speech for a senator change if he is up for reelection? How are the topics distributed for a democrat or for a republican senator? Can we use hash tags to predict the party? And lastly how do the topics compare between speech and Twitter for a specific politician and to the general trendy topics? \\
+But there actually is already enough data labeled for a very wide range of topics on Twitter. By interpreting hashtags as labeled data for topics we can expand the labeled data immediately. With 500 million tweets per day \cite{twitter_stats} and many of them tagged with different topics. From a sample of 1 million random tweets 15.32\% had at least 1 tag. The idea then was simple, learn a topic model through hashtags and transfer the learned model to other domains. In this work we were interested in applying it to speeches of politicians. In particular we thought about the following ideas: How does the topics of a speech for a senator change if he is up for reelection? How are the topics distributed for a democrat or for a republican senator? Can we use hashtags to predict the party? And lastly how do the topics compare between speech and Twitter for a specific politician and to the general trendy topics? \\
 The paper continuous in the following manor: 
 \begin{enumerate}
-	\item In Section \ref{sec:Data} I describe the used datasets and how they were obtained. \\
-	\item In Section \ref{sec:Plan} I discuss the two models we used to predict the hash tags and why one failed. \\
-	\item In Section \ref{sec:Experiments} I describe the planned and executed experiments as well as their result.\\
-	\item In Section \ref{sec:Discussion} I discuss the results.\\
+	\item In Section \ref{sec:Data}, Data I describe the used datasets and how they were obtained. \\
+	\item In Section \ref{sec:Plan}, Plan I discuss the two models we used to predict the hashtags and why one failed. \\
+	\item In Section \ref{sec:Experiments}, Experiments \& Results, I describe the planned and executed experiments as well as their result.\\
+	\item In Section \ref{sec:Discussion}, Discussion I discuss the results.\\
 	
-	\item And finally In Section \ref{sec:Summary} I summarize and conclude the paper. \\
-	\item The Code Section \ref{sec:Code} is more of an isolated part that describes the Github repository and what is found where. 
+	\item And finally In Section \ref{sec:Summary}, Summary I summarize and conclude the paper. \\
+	\item The Code Section \ref{sec:Code}, Code is more of an isolated part that describes the Github repository and what is found where. 
 \end{enumerate}
 
 
@@ -54,18 +54,18 @@ The paper continuous in the following manor:
 \label{sec:Data}
 This section contains the description of the used datasets, how they were obtained and the overall statistics. 
 \subsection{Twitter Data}
-Twitter has a rule that one is not allowed to save tweets along with text and make it then publicly available as a dataset. This is because if one wants to make any changes to the tweets e.g. delete them etc. this is no longer globally possible if they are saved somewhere else online. So one is only allowed to save the unique ID that can be used to retrieve the tweets with the Twitter API. A website that makes many important datasets available in this manner is found in  \cite{twitter_datasets}. I downloaded two datasets.
+Twitter has a rule that one is not allowed to save tweets along with text and make it then publicly available as a dataset. This is because if one wants to make any changes to the tweets e.g. delete them, this is no longer globally possible if they are saved somewhere else online. So one is only allowed to save the unique ID that can be used to retrieve the tweets with the Twitter API. A website that makes many important datasets available in this manner is found in  \cite{twitter_datasets}. I downloaded two datasets.
 \subsubsection{Congress Dataset}
 The 115th U.S. Congress Tweet Ids dataset contains 2,041,399 tweets. It covers a date distance from 2017-01-27 to 2019-01-02. It therefore covers 1 year before the senate elections and one year after the senate elections which makes it definitely very interesting for us. The metadata of the dataset specifies the date range but there were tweets in the dataset that were back as late as 2012. 
 \subsubsection{News Dataset}
 The News Outlet Tweet Ids downloaded is a fallback dataset which in case the congress dataset was to "fuzzy" could be used to train on more well written, structured and diverse topic distributed dataset. Which was of course just an hopeful assumption backed by the assumption that journalists were more careful when crafting tweets (e.g. by not using slang and slurs). I ended up not using this dataset. 
 \subsection{Speeches Data}
-The congressional records and therefore the speeches can all be publicly accessed on the congress page \cite{congress_page}. But this side makes it very hard to access and download specific information. So people developed software packages that parse this side for the information and presents it in an accessible format mostly json. I first tried a package from another student but due to some bugs for my specific use case I had to switched to \cite{congress-downloader} which worked very nicely. I used it to parse and save all speeches given in the years 2017 and 2018.
+The congressional records and therefore the speeches can all be publicly accessed on the congress page \cite{congress_page}. But this side makes it very hard to access and download specific information. So people developed software packages that parse this side for the information and make it accessible in a convenient format, mostly json. I first tried a package from another student but due to some bugs for my specific use case I had to switched to \cite{congress-downloader} which worked very nicely. I used it to parse and save all speeches given in the years 2017 and 2018.
 
 
 \section{Plan}
 \label{sec:Plan}
-In the first part of this Section I will tell about LDA and about how I planed to adapt LDA so it is able to predict hashtags. In the second part I give a summary of the neural network based method that finally worked for predicting hash tags. 
+In the first part of this Section I will tell about LDA and about how I planed to adapt it to be able to predict hashtags as well. In the second part I give a summary of the neural network based method that finally worked for predicting hashtags. 
 \subsection{Latent Dirichlet Allocation (LDA)}
 \subsubsection{Standard LDA}
 LDA was one of the algorithms for topic models that got presented in class. The generative model to generate a word makes it very simple to think about LDA. Given a document sample a topic and for this topic sample a word. And the word which is observed is used to learn the corresponding distributions. \\
@@ -91,7 +91,7 @@ Where $\alpha \in \R^K, \beta \in \R^{|V|}$ are the parameters for the dirichlet
 
 
 \subsubsection{Extended LDA}
-So naturally I thought it should be simple to extend LDA so that it can also predict hash tags in the following way. For some document and its document-topic distribution I sample two topics and then for the topic-word distribution I sample a word and additionally to the topic-word distribution I just have a topic-hashtag distribution from which I sample a hashtag. And the we can learn the correct distributions since we observe both word and hashtag. \textbf{More formally} we have only 3 additions (inserted in blue) to the process as defined in normal lda: 
+So naturally I thought it should be simple to extend LDA so that it can also predict hashtags in the following way. For some document and its document-topic distribution I sample two topics and then for the topic-word distribution I sample a word and additionally to the topic-word distribution I just have a topic-hashtag distribution from which I sample a hashtag. And the we can learn the correct distributions since we observe both word and hashtag. \textbf{More formally} we have only 3 additions (inserted in blue) to the process as defined in normal LDA: 
 
 \small
 \begin{align*}
@@ -115,7 +115,7 @@ Where $\alpha \in \R^K, \beta \in \R^{|V|}, \gamma \in \R^K$ are the parameters 
 
 \subsection{Training}
 Now the generative model is only the first step because we're not interested in generating words. We're interested in the so called posteriori distribution: Given words what are the topic-distribution of a document. Then from that generate hashtags by sampling a topic and sampling a hashtag for the document. This means that we have a so called inference problem and normally one applies bayes formula to get the topic distribution: \[ p(\theta_m | w) = \frac{p(w | \theta_m)p(\theta_m)}{p(w)} \] But the so called evidence term \[p(w) = \int_{\theta_m} p(w | \theta_m)p(\theta_m) d\theta_m^K \] is very hard to compute because every new possible topic increases computing time exponentially so this is nearly impossible to compute already for very little amount of topics. 
-Researchers have proposed different methods to approximate this posteriori distribution with other methods and there are a lot of software frameworks that automatically calculate the posterior distirbution. I decided to use pyro \cite{bingham2018pyro} which allows to describe the generative model in a very pytonian way and uses pyTorch \cite{paszke2017automatic} as backend for matrix and optimization calculations which should make it ideal for big datasets. See the Code Section \ref{sec:Code} for an overview of what is implemented in which files.   The optimization process is either via a monte carlo method (MCMC) or via Variational Inference (VI). Bot methods are explained in the next two subsections very briefly. 
+Researchers have proposed different methods to approximate this posteriori distribution with other methods and there are a lot of software frameworks that automatically calculate the posterior distirbution. I decided to use Pyro \cite{bingham2018pyro} which allows to describe the generative model in a very pytonian way and uses pyTorch \cite{paszke2017automatic} as backend for matrix and optimization calculations which should make it ideal for big datasets. See the Code Section \ref{sec:Code} for an overview of what is implemented in which files.   The optimization process is either via a monte carlo method (MCMC) or via Variational Inference (VI). Both methods are explained in the next two subsections very briefly. 
 
 \subsubsection{Variational Inference}
 The big idea in Variational Inference (VI) is to propose a proposal distribution $q_\lambda(\theta_m)$ which gets adapted via parameter $\lambda$ to be as close as possible to the real distribution we care about $p(\theta_m | w)$. Closeness is measured via kullback-leibler divergence but this can't be calculated directly most of the time so alternatively one maximizes the so called ELBO which minimizes the kullback-leibler divergence. 
@@ -124,7 +124,7 @@ Then to maximize the ELBO in most software packages one calculates the gradient 
 Since I used pyro to implement this, in pyro $q_\lambda$ is described in the so called "guide" function and the joint distribution $p(\theta_m, w)$ is described in the so called "model". 
 
 \subsubsection{Markov Chain Monte Carlo}
-Markov Chain Monte Carlo (MCMC) algorithms are a bit more involved in theory and there are a lot more flavors then in variational inference. But the underlying idea is quite similar to VI. MCMC algorithms propose a markov chain from which they draw correlated samples when moving from state to state in this chain but which promises to converge to the correct distribution. Now one may ask why we do not use this all the time when it converges to the correct distribution? Sadly such a chain has a so called "warm up" stage where we have to throw away samples up to the point where the distribution is burned it and we do not know how long this warm up phase is. Therefore normally one uses empirically defined rules and tests to estimate the length of the warm-up phase. A second problem is that complicated distributions get broken up into multiple conditional distributions and it can get slow to sample such distributions sequentially. \\
+Markov Chain Monte Carlo (MCMC) algorithms are a bit more involved in theory and there are a lot more flavors then in VI. But the underlying idea is quite similar to VI. MCMC algorithms propose a markov chain from which they draw correlated samples when moving from state to state in this chain but which promises to converge to the correct distribution. Now one may ask why we do not use this all the time when it converges to the correct distribution? Sadly such a chain has a so called "warm up" stage where we have to throw away samples up to the point where the distribution is burned it and we do not know how long this warm up phase is. Therefore normally one uses empirically defined rules and tests to estimate the length of the warm-up phase. A second problem is that complicated distributions get broken up into multiple conditional distributions and it can get slow to sample such distributions sequentially. \\
 
 \subsection{Tweet2vec - Recurrent Neural Network}
 After the extended LDA somewhat failed I read multiple papers and tested a multitude of other models. The one that finally worked was a neural network based solution: Tweet2Vec \cite{DhingraZFMC16}. The basic idea behind this model is that they view the character as smallest unit rather then the word as in LDA. This brings quite a few advantage. Most importantly misspelled words, slangs and slurs can be encoded with the same embedding meaning much easier. And we do not have to save all the words which due to the many abbreviations and slangs on Twitter can blow up the vocabulary very much. In the congress dataset we have 11'498'020 number of different tokens. Furthermore they assume that a tweet has some latent representation/embedding and from this latent representation/embedding they predict the hashtag. To get a loss they use cross entropy loss based on predicted hashtag versus given hashtag. The neural network is mainly built out of Bi-directional Gated Recurrent Unit (Bi-GRU) which behave similarly as LSTM's (Long short-term memory) blocks. The size of the input is reasonable constraint on the number of characters a tweet can have - 145. The embedding part of the tweet2vec neural network can be seen in Figure \ref{fig:tweet2vecembedding}. The decoder part is just a dense layer with the number of neurons equal to the number of hashtags. The output of this dense layer is then used as input for the softmax function to get the probability of each hashtag. 
@@ -166,26 +166,26 @@ After the extended LDA somewhat failed I read multiple papers and tested a multi
 		Cruz       & R &      2         \\
 		King       & I &     3          \\ \bottomrule
 	\end{tabular}
-	\caption{List of senators up for reelection in 2018. (D = Democrat, R = Republican, I = Independent).}
-	\label{tbl:senators}
+	\caption{List of Senators up for reelection in 2018. (D = Democrat, R = Republican, I = Independent).}
+	\label{tbl:Senators}
 \end{table}
 
 
 \section{Experiments \& Results}
 \label{sec:Experiments}
 First lets reiterate more concrete about what we want to figure out and then subsequently how we design the experiments to test our hypothesis. 
-We start with a simple one: Can we tag speeches of politicians with hashtags learned from twitter? Then we go on to figure out how tags compare for someone giving a speech before and after campaigning for reelection. 
+We start with a simple one: Can we tag speeches of politicians with hashtags learned from Twitter? Then we go on to figure out how tags compare for someone giving a speech before and after campaigning for reelection. 
 
-\subsection{Can we tag speeches of politicians with hashtags learned from twitter? }
-\subsubsection{Data}
+\subsection{Can we tag speeches of politicians with hashtags learned from Twitter? }
+\subsubsection{Training Data}
 The politician set consisted of 449334 tweets which we splitted randomly into 90\% training data and 10\% testing data. I counted all the hashtags and removed all that were not in the top 500 used hashtags (from 39671 total). The 500 had no specific reason other then to simplify the prediction and that there are a lot of tags that are used very few times which makes it not relevant for my use case. 
 
 \subsubsection{Results}
 
-As explained in previous sections I used tweet2vec.  In Figure \ref{fig:tweet2vectraining} one can see that we got nearly 25\% recall for tag number 1 which is quite good considering how difficult the task is (Randomly predicting one of the top 500 would result in 0.2\% recall). For the speeches I was only interested in the senators up for re-election. It is a set of 24 senators listed in Table \ref{tbl:senators} with their corresponding party and the number of speeches they gave in the years 2017 and 2018. \\
+As explained in previous sections I used tweet2vec.  In Figure \ref{fig:tweet2vectraining} one can see that we got nearly 25\% recall for tag number 1 which is quite good considering how difficult the task is (Randomly predicting one of the top 500 would result in 0.2\% recall). For the speeches I was only interested in the Senators up for re-election. It is a set of 24 Senators listed in Table \ref{tbl:Senators} with their corresponding party and the number of speeches they gave in the years 2017 and 2018. \\
 Sadly and for me quite unexpected this dataset of speeches is very small.  But it does not hinder us to tag the available speeches. To tweet2vec to be able to work on the speeches I had to cut it up into pieces of 145 and additionally I did some preprocessing like stemming, removing stop words and removing line breaks just to get a bit shorter speeches and get more content into those 145 characters. 
 
-In the boxes one can see the input for the trained tweet2vec in the top part and the tags tweet2vec predicted in the bottom part. 
+In the boxes one can see in the top part the input speeches for the on Twitter data trained tweet2vec and the tags tweet2vec predicted in the bottom part. 
 
 \begin{framed}
 	\textbf{Senator Sanders}: \\
@@ -204,7 +204,7 @@ I really tried to also find a positive example but I just couldn't really find a
 
  
 \subsection{How does being before an election affect the tags a politican uses? }
-After wasting a lot of time on the tagging speeches part I concentrated the little rest of my time on only analyzing the raw Twitter data. And one can say that for some senators definitely tweets differently and is affected when having an election. I picked a democratic senator and a republican senator to showcase how tweets change. Local topic get very important for senators and most tweets will get tagged with the state their from. In figure \ref{fig:hironobeforeafterelection} its the case for the 2012 election where Senator Hirono wants to get elected for Hawaii. In Figure \ref{fig:senatorfischerbeforeafterelection} one can see the number of tweets at a specific date from Senator Fisher of the republicans. It shows that shortly before the election in Nebraska, Nebraska specific tweets definitely spiked.\\
+After wasting a lot of time on the tagging speeches part I concentrated the little rest of my time on only analyzing the raw Twitter data. And one can say that for some Senators definitely tweets differently and is affected when having an election. I picked a democratic senator and a republican senator to showcase how tweets change. Local topic get very important for Senators and most tweets will get tagged with the State their from. In figure \ref{fig:hironobeforeafterelection} its the case for the 2012 election where Senator Hirono wants to get elected for Hawaii. In Figure \ref{fig:senatorfischerbeforeafterelection} one can see the number of tweets at a specific date from Senator Fisher of the republicans. It shows that shortly before the election in Nebraska, Nebraska specific tweets definitely spiked.\\
 But it is definitely not an if and only if deduction. There are a lot of Senators who don't care about tweeting for local problems e.g. Senator Warren and Senator Sanders. See Figure \ref{fig:tweetsSanders} for the distribution of tags for Senator Sanders and \ref{fig:tweetsWarren} for the distribution of tags over time for Senator Warren. In both it is obvious that they have more global priorities then their own states. The plots for all the other Senators can be checked in my github repository see Section \ref{sec:Code}. But not only could it be that the tweet behaviour does not change but that a Senator could start tweeting about local events with no local election coming up. An example for this is Senator Cruz who had a hard election in Texas. But in the year of the election there was also a hurrican as strong as all 10 years and he tweeted a lot about that in that same time frame which is also the time of the election seen in Figure \ref{fig:senatorcruztop5tweetsmid20172018}.
  
 \begin{figure}
@@ -292,7 +292,7 @@ Then next \textbf{my Pyro-LDA} implementation:
 	---- topic 4 -----\\
 	'would', 'program', 'reward', 'case', 'right', 'windows'
 \end{framed}
- And one can see that it defintly finds some words that belong together but it seems that it can't really find a hard border between the topics. Then I googled a bit about what may be could be wrong with my model and I stumbled upon an implementation provided by Pyro itself. This implementation uses a neural network as a proposal distribution for the topics. So that the neural network could find some non linear mapping between the input words to the specific topic. So I tested this as well \textbf{Pyro-LDA}:
+ And one can see that it defintly finds some words that belong together but it seems that it can't really find a hard border between the topics. Then I googled a bit about what may be could be wrong with my model and I stumbled upon an implementation provided by Pyro itself. This implementation uses a neural network as a proposal distribution for the topics. So that the neural network could find some non linear mapping between the input words and a specific topic. So I tested this as well \textbf{Pyro-LDA}:
  \begin{framed}
  	---- topic 0 -----\\
  	'anyone', 'would', 'post', 'looking', 'system', 'first', 'please', 'hello', 'article', 'several'\\
@@ -327,6 +327,11 @@ And one can see that it has multiple tags from this 39671 that it really likes b
 
 I was quite surprised about the very small amount of speeches politicians gave on the senate floor. I think I got surprised because the media implies through extensive coverage of politicians nearly every day that there happens actually much more then actually happens. The amount of speeches makes more sense when considering that there are 100 Senators and only 148 legislative days on average per year over the last 10 years.  \\
 
+\subsection{Failed transfer to speeches}
+Coming back to the wast differences already discussed in the Twitter data to speech data its probably also the reason it failed to make the transfer between tweet and speech. 
+
+\subsection{Failed LDA and LDA extension}
+Its hard to point finger at when LDA in combination with VI just does not work. The main reason is probably that the documents are just to short. Generative models are very flexible meaning high variance and low bias. This means to reduce the variance we have to provide a lot of data. But since we have only a few words per document its just nowhere near enough to get sensible results. The second problem could be context. It can be that a lot of times hashtags provide a context e.g. \#MeToo or that its just a response to the general atmosphere which makes it very hard to classify correctly.
 
 \subsection{Lessons learned}
 I want to write down a few words about the lessons I've learned and reflect a bit so that I can take something to my next project besides the technical. 
@@ -357,11 +362,13 @@ The final results and experiments for LDA with pyro are safed in \textit{baseurl
 
 \subsection{tweet2vec}
 For tweet2vec I created a new github repository to get a clean slate for this new model. The github url is: tweet2vec\_baseurl = \textit{https://github.com/SimiPro/tweet2vec\_lasagne}. The readme is still correct to get it running.
-\subsubsection{Data:}
- The input datafiles indicate over their name how many tweets are in the dataset. E.g. \textit{tweet2vec\_baseurl/my\_training\_file\_10000.txt} is the training file that contains 90\% of 10000 tweets and \textit{tweet2vec\_baseurl/my\_testing\_file\_10000.txt} contains the other 10\% that make up the 10000 tweets. We have 3 datasets of size: 10000, 25000, 449334 number of tweets. 
+\subsubsection{Data}
+ The input data files indicate over their name how many tweets are in the dataset. E.g. \textit{tweet2vec\_baseurl/my\_training\_file\_10000.txt} is the training file that contains 90\% of 10000 tweets and \textit{tweet2vec\_baseurl/my\_testing\_file\_10000.txt} contains the other 10\% that make up the 10000 tweets. We have 3 datasets of size: 10000, 25000, 449334 number of tweets. \\
+ The training and test files for tweet2vec got generated by \textit{base\_url/write\_training\_testing\_file\_tweet2vec.ipynb}.\\
+ Putting the speeches into the right format so that they can be parsed by tweet2vec does: \textit{base\_url/write\_speeches\_2tweet2vec.py}.
 
 \subsubsection{Tagging speeches:}
-\textit{tweet2vec\_baseurl/tweet2vec/tweet2vec\_speeches.py} runs the embedding and tagging on each speech by using the best model which is safed in \textit{tweet2vec\_baseurl/tweet2vec/best\_model}. The specific tagged speeches were gathered in \textit{tweet2vec\_baseurl/results} by politician name and date of the speech so that analysis over time get possible.
+\textit{tweet2vec\_baseurl/tweet2vec/tweet2vec\_speeches.py} runs the embedding and tagging on each speech by using the best model which is safed in \textit{tweet2vec\_baseurl/tweet2vec/best\_model}. The specific tagged speeches were gathered in \textit{tweet2vec\_baseurl/results} by politician name and date of the speech so that analysis over time gets possible.
 
 \subsection{Data Analysis / Plots}
  \textit{base\_url/analyze\_predicted\_tags.ipynb} creates the plots based on the predicted tags whereas  \textit{base\_url/TimeLineHashTags.ipynb} creates the plots based on real tags. 
